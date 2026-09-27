@@ -1,0 +1,851 @@
+{
+  "info": {
+    "_postman_id": "guepex-complete-tests-v3",
+    "name": "Guepex API - Complete Integration Tests",
+    "description": "Comprehensive test suite for all Guepex API features including shipments, tracking, webhooks, returns, and polling",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3001",
+      "type": "string"
+    },
+    {
+      "key": "adminToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "userToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "testOrderId",
+      "value": "14",
+      "type": "string"
+    },
+    {
+      "key": "testOrderId2",
+      "value": "15",
+      "type": "string"
+    },
+    {
+      "key": "testTrackingNumber",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "testReturnId",
+      "value": "1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "0. Test Data Setup",
+      "description": "Run these endpoints to prepare orders for testing. Reset Order 14 clears tracking, Confirm Order 15 prepares for batch tests.",
+      "item": [
+        {
+          "name": "Reset Order 14 for Testing",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const jsonData = pm.response.json();",
+                  "    console.log('✅ Order 14 reset - ready for new shipment test');",
+                  "    console.log('Status:', jsonData.data.current_status);",
+                  "    console.log('Tracking:', jsonData.data.tracking_number || 'Cleared');",
+                  "    pm.test('Order reset successfully', () => {",
+                  "        pm.expect(jsonData.success).to.be.true;",
+                  "        pm.expect(jsonData.data.tracking_number).to.be.null;",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{adminToken}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"Reset for testing - cleared tracking number\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/{{testOrderId}}/reset-shipment",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "{{testOrderId}}", "reset-shipment"]
+            }
+          }
+        },
+        {
+          "name": "Confirm Order 15 for Batch Test",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const jsonData = pm.response.json();",
+                  "    console.log('✅ Order 15 confirmed for batch test');",
+                  "    console.log('Status:', jsonData.data.current_status);",
+                  "    pm.test('Order confirmed', () => {",
+                  "        pm.expect(jsonData.success).to.be.true;",
+                  "        pm.expect(jsonData.data.current_status).to.eql('processing');",
+                  "    });",
+                  "} else if (pm.response.code === 404) {",
+                  "    console.log('⚠️ Order 15 not found - update testOrderId2 variable');",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{adminToken}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"confirmed\",\n  \"notes\": \"Confirmed for batch shipment testing\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/{{testOrderId2}}/phone-confirmation",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "{{testOrderId2}}", "phone-confirmation"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "1. Authentication",
+      "item": [
+        {
+          "name": "Admin Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const jsonData = pm.response.json();",
+                  "    if (jsonData.accessToken) {",
+                  "        pm.collectionVariables.set('adminToken', jsonData.accessToken);",
+                  "        console.log('✅ Admin token saved');",
+                  "    }",
+                  "    pm.test('Admin login successful', () => {",
+                  "        pm.expect(jsonData.success).to.be.true;",
+                  "        pm.expect(jsonData.user.role).to.eql('admin');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@maxistore.com\",\n  \"password\": \"admin123\",\n  \"isAdmin\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Customer Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const jsonData = pm.response.json();",
+                  "    if (jsonData.accessToken) {",
+                  "        pm.collectionVariables.set('userToken', jsonData.accessToken);",
+                  "        console.log('✅ Customer token saved');",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"sifoubiad001@gmail.com\",\n  \"password\": \"customer123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Shipment Creation",
+      "item": [
+        {
+          "name": "Get Order Before Shipment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const jsonData = pm.response.json();",
+                  "    console.log('Order Status:', jsonData.data.current_status);",
+                  "    console.log('Phone Confirmed:', jsonData.data.phone_confirmation_status);",
+                  "    console.log('Tracking:', jsonData.data.tracking_number || 'None');",
+                  "    ",
+                  "    pm.test('Order retrieved', () => pm.expect(jsonData.success).to.be.true);",
+                  "    ",
+                  "    if (jsonData.data.tracking_number) {",
+                  "        console.log('⚠️ Order already has tracking - run \"Reset Order 14\" first');",
+                  "    } else if (jsonData.data.phone_confirmation_status !== 'confirmed') {",
+                  "        console.log('⚠️ Order needs phone confirmation - run \"Phone Confirm Order\" first');",
+                  "    } else {",
+                  "        console.log('✅ Order ready for shipment creation');",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{adminToken}}"}
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/{{testOrderId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "{{testOrderId}}"]
+            }
+          }
+        },
+        {
+          "name": "Phone Confirm Order",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.test('Order confirmed', () => {",
+                  "        pm.expect(jsonData.success).to.be.true;",
+                  "        pm.expect(jsonData.data.current_status).to.eql('processing');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{adminToken}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"confirmed\",\n  \"notes\": \"Customer confirmed order via phone - ready for Guepex shipment\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/{{testOrderId}}/phone-confirmation",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "{{testOrderId}}", "phone-confirmation"]
+            }
+          }
+        },
+        {
+          "name": "Create Single Shipment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200 || pm.response.code === 201) {",
+                  "    const jsonData = pm.response.json();",
+                  "    // Extract tracking from data object",
+                  "    const tracking = jsonData.data?.tracking || jsonData.tracking;",
+                  "    ",
+                  "    if (tracking) {",
+                  "        pm.collectionVariables.set('testTrackingNumber', tracking);",
+                  "        console.log('✅ Tracking number saved:', tracking);",
+                  "    } else {",
+                  "        console.log('⚠️ No tracking number in response:', JSON.stringify(jsonData, null, 2));",
+                  "    }",
+                  "    ",
+                  "    pm.test('Shipment created', () => {",
+                  "        pm.expect(jsonData.success).to.be.true;",
+                  "        pm.expect(jsonData.data).to.exist;",
+                  "        pm.expect(jsonData.data.tracking).to.exist;",
+                  "        pm.expect(jsonData.data.labelUrl).to.exist;",
+                  "    });",
+                  "} else if (pm.response.code === 400) {",
+                  "    const error = pm.response.json();",
+                  "    console.log('❌ Error:', error.error);",
+                  "    if (error.error.includes('already has tracking')) {",
+                  "        console.log('💡 Solution: Run \"Reset Order 14\" from Test Data Setup folder');",
+                  "    } else if (error.error.includes('phone-confirmed')) {",
+                  "        console.log('💡 Solution: Run \"Phone Confirm Order\" first');",
+                  "    }",
+                  "} else {",
+                  "    console.log('Error:', pm.response.json());",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{adminToken}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prepaidAmount\": 0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/{{testOrderId}}/create-shipment",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "{{testOrderId}}", "create-shipment"]
+            }
+          }
+        },
+        {
+          "name": "Create Batch Shipments",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const jsonData = pm.response.json();",
+                  "    console.log('✅ Successful:', jsonData.success.length);",
+                  "    console.log('❌ Failed:', jsonData.failed.length);",
+                  "    ",
+                  "    if (jsonData.failed.length > 0) {",
+                  "        console.log('Failed orders:', JSON.stringify(jsonData.failed, null, 2));",
+                  "    }",
+                  "    ",
+                  "    pm.test('Batch processed', () => {",
+                  "        pm.expect(jsonData.success).to.be.an('array');",
+                  "        pm.expect(jsonData.failed).to.be.an('array');",
+                  "    });",
+                  "} else if (pm.response.code === 400) {",
+                  "    const error = pm.response.json();",
+                  "    console.log('❌ Error:', error.error);",
+                  "    if (error.error.includes('No valid orders')) {",
+                  "        console.log('💡 Solution: Run \"Confirm Order 15\" from Test Data Setup');",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{adminToken}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderIds\": [{{testOrderId}}, {{testOrderId2}}]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/batch-create-shipments",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "batch-create-shipments"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Tracking & Status",
+      "item": [
+        {
+          "name": "Get Order After Shipment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const jsonData = pm.response.json();",
+                  "    console.log('Tracking:', jsonData.data.tracking_number);",
+                  "    console.log('Carrier:', jsonData.data.carrier);",
+                  "    console.log('Shipment Status:', jsonData.data.shipment_status);",
+                  "    pm.test('Has tracking number', () => {",
+                  "        pm.expect(jsonData.data.tracking_number).to.exist;",
+                  "        pm.expect(jsonData.data.carrier).to.eql('Guepex');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{adminToken}}"}
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/{{testOrderId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "{{testOrderId}}"]
+            }
+          }
+        },
+        {
+          "name": "Get Tracking History",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const jsonData = pm.response.json();",
+                  "    console.log('History entries:', jsonData.history.length);",
+                  "    pm.test('Has tracking history', () => {",
+                  "        pm.expect(jsonData.tracking_number).to.exist;",
+                  "        pm.expect(jsonData.history).to.be.an('array');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/{{testOrderId}}/tracking-history",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "{{testOrderId}}", "tracking-history"]
+            }
+          }
+        },
+        {
+          "name": "Public Order Tracking",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const jsonData = pm.response.json();",
+                  "    console.log('Order:', jsonData.order_number);",
+                  "    console.log('Status:', jsonData.current_status);",
+                  "    pm.test('Order tracking works', () => {",
+                  "        pm.expect(jsonData.order_number).to.exist;",
+                  "        pm.expect(jsonData.current_status).to.exist;",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/tracking/ORD-000014",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "tracking", "ORD-000014"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Webhooks",
+      "item": [
+        {
+          "name": "Webhook - Status Update (En transit)",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "const tracking = pm.collectionVariables.get('testTrackingNumber');",
+                  "if (!tracking) {",
+                  "    console.log('❌ ERROR: testTrackingNumber is empty!');",
+                  "    console.log('💡 Run \"Create Single Shipment\" first to get tracking number');",
+                  "} else {",
+                  "    console.log('✅ Using tracking number:', tracking);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Webhook accepted', () => {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 204]);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tracking\": \"{{testTrackingNumber}}\",\n  \"last_status\": \"En transit\",\n  \"status_reason\": null,\n  \"occurred_at\": \"2026-01-04T10:00:00Z\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/webhooks/guepex",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "webhooks", "guepex"]
+            }
+          }
+        },
+        {
+          "name": "Webhook - Out for Delivery",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tracking\": \"{{testTrackingNumber}}\",\n  \"last_status\": \"Sorti en livraison\",\n  \"status_reason\": null,\n  \"occurred_at\": \"2026-01-04T11:00:00Z\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/webhooks/guepex",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "webhooks", "guepex"]
+            }
+          }
+        },
+        {
+          "name": "Webhook - Delivered",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tracking\": \"{{testTrackingNumber}}\",\n  \"last_status\": \"Livré\",\n  \"status_reason\": null,\n  \"occurred_at\": \"2026-01-04T14:00:00Z\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/webhooks/guepex",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "webhooks", "guepex"]
+            }
+          }
+        },
+        {
+          "name": "Webhook - Delivery Failed",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tracking\": \"{{testTrackingNumber}}\",\n  \"last_status\": \"Échec livraison\",\n  \"status_reason\": \"Téléphone injoignable\",\n  \"occurred_at\": \"2026-01-04T14:00:00Z\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/webhooks/guepex",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "webhooks", "guepex"]
+            }
+          }
+        },
+        {
+          "name": "Webhook - Returning to Warehouse",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tracking\": \"{{testTrackingNumber}}\",\n  \"last_status\": \"Retour vers vendeur\",\n  \"status_reason\": \"Client absent (échoué)\",\n  \"occurred_at\": \"2026-01-04T16:00:00Z\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/webhooks/guepex",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "webhooks", "guepex"]
+            }
+          }
+        },
+        {
+          "name": "Webhook - Returned to Seller",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tracking\": \"{{testTrackingNumber}}\",\n  \"last_status\": \"Retourné au vendeur\",\n  \"status_reason\": null,\n  \"occurred_at\": \"2026-01-04T18:00:00Z\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/webhooks/guepex",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "webhooks", "guepex"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Returns & Reverse Logistics",
+      "item": [
+        {
+          "name": "Get Returns List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{adminToken}}"}
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/returns",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "returns"]
+            }
+          }
+        },
+        {
+          "name": "Schedule Return Pickup",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const jsonData = pm.response.json();",
+                  "    console.log('Return Tracking:', jsonData.tracking_number);",
+                  "    pm.test('Return pickup scheduled', () => {",
+                  "        pm.expect(jsonData.success).to.be.true;",
+                  "        pm.expect(jsonData.tracking_number).to.exist;",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{adminToken}}"}
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/returns/{{testReturnId}}/schedule-pickup",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "returns", "{{testReturnId}}", "schedule-pickup"]
+            }
+          }
+        },
+        {
+          "name": "Get Return Tracking",
+          "request": {
+            "method": "GET",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{adminToken}}"}
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/returns/{{testReturnId}}/tracking",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "returns", "{{testReturnId}}", "tracking"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Shipping Calculator",
+      "item": [
+        {
+          "name": "Calculate Shipping Estimate",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const jsonData = pm.response.json();",
+                  "    console.log('Home:', jsonData.estimate.homeDelivery);",
+                  "    console.log('Stop Desk:', jsonData.estimate.stopDesk);",
+                  "    pm.test('Shipping calculated', () => {",
+                  "        pm.expect(jsonData.success).to.be.true;",
+                  "        pm.expect(jsonData.estimate.homeDelivery).to.be.a('number');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"communeId\": 1601,\n  \"isStopDesk\": false,\n  \"items\": [\n    {\n      \"weight\": 2.5,\n      \"quantity\": 1\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/shipping-estimate",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "shipping-estimate"]
+            }
+          }
+        },
+        {
+          "name": "Validate Shipping Address",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"communeId\": 1601,\n  \"address\": \"123 Test Street\",\n  \"phone\": \"0676414241\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/validate-address",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "validate-address"]
+            }
+          }
+        },
+        {
+          "name": "Get Delivery Estimate",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/delivery-estimate?communeId=1601",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "delivery-estimate"],
+              "query": [{"key": "communeId", "value": "1601"}]
+            }
+          }
+        },
+        {
+          "name": "Get Stop Desks in Wilaya",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/stop-desks?wilayaId=16",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "stop-desks"],
+              "query": [{"key": "wilayaId", "value": "16"}]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Admin Operations",
+      "item": [
+        {
+          "name": "Get Orders Needing Phone Confirmation",
+          "request": {
+            "method": "GET",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{adminToken}}"}
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/orders?status=pending",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders"],
+              "query": [{"key": "status", "value": "pending"}]
+            }
+          }
+        },
+        {
+          "name": "Get All Active Shipments",
+          "request": {
+            "method": "GET",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{adminToken}}"}
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/orders?hasTracking=true&status=processing",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders"],
+              "query": [
+                {"key": "hasTracking", "value": "true"},
+                {"key": "status", "value": "processing"}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Polling Service Status",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Polling active', () => {",
+                  "    const text = pm.response.text();",
+                  "    pm.expect(text).to.include('running');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/webhooks/guepex",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "webhooks", "guepex"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

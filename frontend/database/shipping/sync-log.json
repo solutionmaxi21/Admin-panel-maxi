@@ -1,0 +1,14 @@
+[
+  {
+    "timestamp": "2026-01-03T17:54:30.581Z",
+    "results": {
+      "success": [
+        "wilayas",
+        "communes",
+        "centers",
+        "fees"
+      ],
+      "errors": []
+    }
+  }
+]

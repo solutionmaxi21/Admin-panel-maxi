@@ -1,0 +1,41 @@
+node_modules
+npm-debug.log*
+logs
+uploads
+.env
+.env.local
+.git
+.gitignore
+
+# Documentation
+*.md
+docs/
+postman/
+k6/
+
+# Database scripts (only needed for postgres init, not the app image)
+sql/
+db.sql
+db
+complete-schema.sql
+minimal-schema.sql
+
+# Test files
+test-*.js
+find-admins.js
+check-users.js
+apply-migration-*.js
+
+# Build artifacts
+*.sql.gz
+
+# Prisma (required for runtime migrations)
+prisma.config.ts
+
+# PM2 (Docker manages the process)
+ecosystem.config.cjs
+
+# Setup scripts
+setup-production.bat
+setup-production.sh
+start-postgres.bat

@@ -1,0 +1,46 @@
+{
+  "name": "maxi-admin-panel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MaxiStore — panneau d'administration et boutique unifies (Next.js storefront + API Express)",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "setup": "npm run install:all && npm run env:init",
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "env:init": "node scripts/init-env.mjs",
+
+    "dev": "concurrently --kill-others-on-fail --names \"API,WEB\" --prefix-colors \"cyan,magenta\" \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "npm run dev --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend",
+
+    "build": "npm run build --prefix frontend",
+    "build:all": "npm run build",
+
+    "start": "concurrently --kill-others-on-fail --names \"API,WEB\" --prefix-colors \"cyan,magenta\" \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "npm run start --prefix backend",
+    "start:frontend": "npm run start --prefix frontend",
+
+    "lint": "npm run lint --prefix frontend",
+    "typecheck": "npm run typecheck --prefix frontend",
+
+    "db:migrate": "npm run migrate --prefix backend",
+    "db:generate": "npx --prefix backend prisma generate",
+    "db:seed": "npm run db:seed --prefix backend",
+    "db:bootstrap": "npm run db:bootstrap --prefix backend",
+    "db:check": "npm run db:check --prefix backend",
+    "db:studio": "npm run db:studio --prefix backend",
+
+    "docker:up": "docker compose up -d --build",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f",
+    "docker:reset": "docker compose down -v && docker compose up -d --build",
+
+    "verify": "node scripts/verify.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

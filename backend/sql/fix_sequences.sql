@@ -1,0 +1,22 @@
+-- Fix all sequences to be synchronized with table data
+SELECT setval('addresses_id_seq', (SELECT COALESCE(MAX(id), 0) FROM addresses) + 1);
+SELECT setval('categories_id_seq', (SELECT COALESCE(MAX(id), 0) FROM categories) + 1);
+SELECT setval('favorites_id_seq', (SELECT COALESCE(MAX(id), 0) FROM favorites) + 1);
+SELECT setval('guepex_commune_fees_id_seq', (SELECT COALESCE(MAX(id), 0) FROM guepex_commune_fees) + 1);
+SELECT setval('guepex_shipping_fees_id_seq', (SELECT COALESCE(MAX(id), 0) FROM guepex_shipping_fees) + 1);
+SELECT setval('guepex_sync_log_id_seq', (SELECT COALESCE(MAX(id), 0) FROM guepex_sync_log) + 1);
+SELECT setval('order_history_id_seq', (SELECT COALESCE(MAX(id), 0) FROM order_history) + 1);
+SELECT setval('order_items_id_seq', (SELECT COALESCE(MAX(id), 0) FROM order_items) + 1);
+SELECT setval('orders_id_seq', (SELECT COALESCE(MAX(id), 0) FROM orders) + 1);
+SELECT setval('product_attributes_id_seq', (SELECT COALESCE(MAX(id), 0) FROM product_attributes) + 1);
+SELECT setval('product_images_id_seq', (SELECT COALESCE(MAX(id), 0) FROM product_images) + 1);
+SELECT setval('products_id_seq', (SELECT COALESCE(MAX(id), 0) FROM products) + 1);
+SELECT setval('promotions_id_seq', (SELECT COALESCE(MAX(id), 0) FROM promotions) + 1);
+SELECT setval('return_items_id_seq', (SELECT COALESCE(MAX(id), 0) FROM return_items) + 1);
+SELECT setval('returns_id_seq', (SELECT COALESCE(MAX(id), 0) FROM returns) + 1);
+SELECT setval('reviews_id_seq', (SELECT COALESCE(MAX(id), 0) FROM reviews) + 1);
+SELECT setval('stock_id_seq', (SELECT COALESCE(MAX(id), 0) FROM stock) + 1);
+SELECT setval('suppliers_id_seq', (SELECT COALESCE(MAX(id), 0) FROM suppliers) + 1);
+SELECT setval('sync_logs_id_seq', (SELECT COALESCE(MAX(id), 0) FROM sync_logs) + 1);
+SELECT setval('users_id_seq', (SELECT COALESCE(MAX(id), 0) FROM users) + 1);
+SELECT setval('warehouses_id_seq', (SELECT COALESCE(MAX(id), 0) FROM warehouses) + 1);

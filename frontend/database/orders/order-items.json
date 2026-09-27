@@ -1,0 +1,193 @@
+[
+  {
+    "order_item_id": 1,
+    "order_id": 1,
+    "product_id": 2,
+    "quantity": 1,
+    "unit_price": 199000,
+    "discount_amount": 10000,
+    "warehouse_id": 1
+  },
+  {
+    "order_item_id": 2,
+    "order_id": 2,
+    "product_id": 1,
+    "quantity": 1,
+    "unit_price": 620000,
+    "discount_amount": null,
+    "warehouse_id": 1
+  },
+  {
+    "order_item_id": 3,
+    "order_id": 3,
+    "product_id": 3,
+    "quantity": 1,
+    "unit_price": 135000,
+    "discount_amount": null,
+    "warehouse_id": 2
+  },
+  {
+    "order_item_id": 4,
+    "order_id": 4,
+    "product_id": 2,
+    "product_name_snapshot": "HP OMEN 16",
+    "quantity": 4,
+    "unit_price": 199000,
+    "line_total": 796000,
+    "discount_amount": 0
+  },
+  {
+    "order_item_id": 4,
+    "order_id": 5,
+    "product_id": 3,
+    "product_name_snapshot": "ASUS ROG Strix G16",
+    "quantity": 1,
+    "unit_price": 175000,
+    "line_total": 175000,
+    "discount_amount": 0
+  },
+  {
+    "order_item_id": 4,
+    "order_id": 5,
+    "product_id": 6,
+    "product_name_snapshot": "Apple iPad Pro 13 M4 256GB",
+    "quantity": 1,
+    "unit_price": 259000,
+    "line_total": 259000,
+    "discount_amount": 0
+  },
+  {
+    "order_item_id": 7,
+    "order_id": 5,
+    "product_id": 9,
+    "product_name_snapshot": "Razer BlackWidow V4 Pro",
+    "quantity": 1,
+    "unit_price": 38500,
+    "line_total": 38500,
+    "discount_amount": 0
+  },
+  {
+    "order_item_id": 10,
+    "order_id": 5,
+    "product_id": 8,
+    "product_name_snapshot": "Logitech MX Master 3S",
+    "quantity": 1,
+    "unit_price": 18500,
+    "line_total": 18500,
+    "discount_amount": 0
+  },
+  {
+    "order_item_id": 10,
+    "order_id": 5,
+    "product_id": 1,
+    "product_name_snapshot": "Dell Latitude 5540",
+    "quantity": 1,
+    "unit_price": 135000,
+    "line_total": 135000,
+    "discount_amount": 0
+  },
+  {
+    "order_item_id": 10,
+    "order_id": 6,
+    "product_id": 1,
+    "product_name_snapshot": "Dell Latitude 5540",
+    "quantity": 6,
+    "unit_price": 135000,
+    "line_total": 810000,
+    "discount_amount": 0
+  },
+  {
+    "order_item_id": 10,
+    "order_id": 7,
+    "product_id": 1,
+    "product_name_snapshot": "Dell Latitude 5540",
+    "quantity": 4,
+    "unit_price": 135000,
+    "line_total": 540000,
+    "discount_amount": 0
+  },
+  {
+    "order_item_id": 10,
+    "order_id": 7,
+    "product_id": 1,
+    "product_name_snapshot": "Dell Latitude 5540",
+    "quantity": 1,
+    "unit_price": 135000,
+    "line_total": 135000,
+    "discount_amount": 0
+  },
+  {
+    "order_item_id": 10,
+    "order_id": 8,
+    "product_id": 2,
+    "product_name_snapshot": "HP OMEN 16",
+    "quantity": 1,
+    "unit_price": 199000,
+    "subtotal": 199000,
+    "line_total": 199000
+  },
+  {
+    "order_item_id": 10,
+    "order_id": 9,
+    "product_id": 1,
+    "product_name_snapshot": "Dell Latitude 5540",
+    "quantity": 1,
+    "unit_price": 135000,
+    "subtotal": 135000,
+    "line_total": 135000
+  },
+  {
+    "order_item_id": 10,
+    "order_id": 13,
+    "product_id": 2,
+    "product_name_snapshot": "HP OMEN 16",
+    "quantity": 1,
+    "unit_price": 199000,
+    "subtotal": 199000,
+    "line_total": 199000
+  },
+  {
+    "order_item_id": 10,
+    "order_id": 14,
+    "product_id": 1,
+    "product_name_snapshot": "Dell Latitude 5540",
+    "quantity": 4,
+    "unit_price": 135000,
+    "subtotal": 540000,
+    "line_total": 540000,
+    "warehouse_id": 1
+  },
+  {
+    "order_item_id": 10,
+    "order_id": 15,
+    "product_id": 1,
+    "product_name_snapshot": "Dell Latitude 5540",
+    "quantity": 1,
+    "unit_price": 135000,
+    "subtotal": 135000,
+    "line_total": 135000,
+    "warehouse_id": 1
+  },
+  {
+    "order_item_id": 10,
+    "order_id": 16,
+    "product_id": 1,
+    "product_name_snapshot": "Dell Latitude 5540",
+    "quantity": 2,
+    "unit_price": 135000,
+    "subtotal": 270000,
+    "line_total": 270000,
+    "warehouse_id": 1
+  },
+  {
+    "order_item_id": 10,
+    "order_id": 17,
+    "product_id": 67,
+    "product_name_snapshot": "Apple mackbook 2025",
+    "quantity": 1,
+    "unit_price": 96660,
+    "subtotal": 96660,
+    "line_total": 96660,
+    "warehouse_id": 2
+  }
+]

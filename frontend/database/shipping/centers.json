@@ -1,0 +1,1616 @@
+{
+  "last_updated": "2026-01-03T17:52:16.104Z",
+  "total": 161,
+  "data": [
+    {
+      "center_id": 10101,
+      "name": "Agence de Adrar [Yalidine]",
+      "address": "Rue Benhachem Maamar",
+      "gps": "27.875695678434518,-0.28488572885492014",
+      "commune_id": 101,
+      "commune_name": "Adrar",
+      "wilaya_id": 1,
+      "wilaya_name": "Adrar"
+    },
+    {
+      "center_id": 21101,
+      "name": "Agence de Chlef [Yalidine]",
+      "address": "route national N4 Chlef",
+      "gps": "36.1707130,1.3349650",
+      "commune_id": 211,
+      "commune_name": "Chlef",
+      "wilaya_id": 2,
+      "wilaya_name": "Chlef"
+    },
+    {
+      "center_id": 23401,
+      "name": "Agence de Ténès [Guepex]",
+      "address": "Bt A2 Rdc Local 28, Sortie Ouest Route De Mostaganem",
+      "gps": "36.50473150265476,1.286761899576662",
+      "commune_id": 234,
+      "commune_name": "Ténès",
+      "wilaya_id": 2,
+      "wilaya_name": "Chlef"
+    },
+    {
+      "center_id": 21102,
+      "name": "Agence de Chlef [Guepex]",
+      "address": "Cité Cherifi Kadour, 113",
+      "gps": "36.16073470034724,1.3307245621473522",
+      "commune_id": 211,
+      "commune_name": "Chlef",
+      "wilaya_id": 2,
+      "wilaya_name": "Chlef"
+    },
+    {
+      "center_id": 31901,
+      "name": "Agence de Aflou [Yalidine]",
+      "address": "Hai Zahi Ben Aissa, Route El Bayadh (à coté de la centrale de police)",
+      "gps": "34.11114198779646,2.0961174596054004",
+      "commune_id": 319,
+      "commune_name": "Aflou",
+      "wilaya_id": 3,
+      "wilaya_name": "Laghouat"
+    },
+    {
+      "center_id": 30102,
+      "name": "Agence Laghouat (Cité OASIS) [Easyandspeed]",
+      "address": "Cité l'OASIS, centre ville Laghouat, Laghouat.",
+      "gps": "33.811561602108206,2.8597337097525823",
+      "commune_id": 301,
+      "commune_name": "Laghouat",
+      "wilaya_id": 3,
+      "wilaya_name": "Laghouat"
+    },
+    {
+      "center_id": 40101,
+      "name": "Agence de Oum el Bouaghi [Yalidine]",
+      "address": "Cité El Moustakbel",
+      "gps": "35.871998629133536,7.1077427693234645",
+      "commune_id": 401,
+      "commune_name": "Oum el Bouaghi",
+      "wilaya_id": 4,
+      "wilaya_name": "Oum El Bouaghi"
+    },
+    {
+      "center_id": 40301,
+      "name": "Agence de Aïn M'lila [Yalidine]",
+      "address": "Route Messas (à coté superette Amiche)",
+      "gps": "36.04672082846558,6.568678708926481",
+      "commune_id": 403,
+      "commune_name": "Aïn M'lila",
+      "wilaya_id": 4,
+      "wilaya_name": "Oum El Bouaghi"
+    },
+    {
+      "center_id": 50101,
+      "name": "Agence des 500 Logements [Yalidine]",
+      "address": "Lotissement Meddour (En Face Lycee 500 Logements)",
+      "gps": "35.55062452513792,6.154746735050948",
+      "commune_id": 501,
+      "commune_name": "Batna",
+      "wilaya_id": 5,
+      "wilaya_name": "Batna"
+    },
+    {
+      "center_id": 54201,
+      "name": "Agence de Barika [Guepex]",
+      "address": "Boulevard Azil Abdul Rahman, Rue Les Freres Debache, Route De Batna",
+      "gps": "35.3798441310065,5.378196883423196",
+      "commune_id": 542,
+      "commune_name": "Barika",
+      "wilaya_id": 5,
+      "wilaya_name": "Batna"
+    },
+    {
+      "center_id": 50103,
+      "name": "Agence du CHU Route de Tazoult [Guepex]",
+      "address": "Cité frères Lombarkia, ex parc à fourrage",
+      "gps": "35.53111052619345,6.19182254228705",
+      "commune_id": 501,
+      "commune_name": "Batna",
+      "wilaya_id": 5,
+      "wilaya_name": "Batna"
+    },
+    {
+      "center_id": 60101,
+      "name": "Agence de Béjaïa cité tobal [Guepex]",
+      "address": "Béjaïa cité tobal en face de syken collège ",
+      "gps": "36.74944866542828,5.071125525141842",
+      "commune_id": 601,
+      "commune_name": "Béjaïa",
+      "wilaya_id": 6,
+      "wilaya_name": "Béjaïa"
+    },
+    {
+      "center_id": 62501,
+      "name": "Agence de Akbou [Yalidine]",
+      "address": "Cite 16 Logement Eplf",
+      "gps": "36.45941780427994,4.536392157727091",
+      "commune_id": 625,
+      "commune_name": "Akbou",
+      "wilaya_id": 6,
+      "wilaya_name": "Béjaïa"
+    },
+    {
+      "center_id": 64001,
+      "name": "Agence de El Kseur [Guepex]",
+      "address": "Rue Meziane Hmimi",
+      "gps": "36.68152543555525,4.853047853275546",
+      "commune_id": 640,
+      "commune_name": "El Kseur",
+      "wilaya_id": 6,
+      "wilaya_name": "Béjaïa"
+    },
+    {
+      "center_id": 60102,
+      "name": "Agence de Béjaïa Edimco [Yalidine]",
+      "address": "Zone Industrielle, Rue Mahfoudi Fateh, EDIMCO, (Derrière le centre commercial Ritadj-Mall)",
+      "gps": "36.74500763190776,5.056510728863536",
+      "commune_id": 601,
+      "commune_name": "Béjaïa",
+      "wilaya_id": 6,
+      "wilaya_name": "Béjaïa"
+    },
+    {
+      "center_id": 73201,
+      "name": "Agence de Tolga [Guepex]",
+      "address": "Cité Sidi Rouak rue Soltani Ahmed",
+      "gps": "34.73467307145867,5.381802271145784",
+      "commune_id": 732,
+      "commune_name": "Tolga",
+      "wilaya_id": 7,
+      "wilaya_name": "Biskra"
+    },
+    {
+      "center_id": 70402,
+      "name": "Agence zone ouest Biskra [Easyandspeed]",
+      "address": "coopératif du verger N°22 zone ouest Biskra ",
+      "gps": "34.86410253083451,5.715919862126138",
+      "commune_id": 704,
+      "commune_name": "Biskra",
+      "wilaya_id": 7,
+      "wilaya_name": "Biskra"
+    },
+    {
+      "center_id": 80101,
+      "name": "Agence de Béchar centre ville [Yalidine]",
+      "address": "Cite Hai El Badr, Lot N°50, Secteur N°49, Local 01.",
+      "gps": "31.605981803220686,-2.232912635019772",
+      "commune_id": 801,
+      "commune_name": "Béchar",
+      "wilaya_id": 8,
+      "wilaya_name": "Béchar"
+    },
+    {
+      "center_id": 80102,
+      "name": "Agence Béchar cité al salam [EasyAndSpeed]",
+      "address": "Quartier Essalam, Section 21, Groupe foncier n° 524, Béchar",
+      "gps": "31.62948007960236,-2.22078959025644",
+      "commune_id": 801,
+      "commune_name": "Béchar",
+      "wilaya_id": 8,
+      "wilaya_name": "Béchar"
+    },
+    {
+      "center_id": 90101,
+      "name": "Agence de Blida [Yalidine]",
+      "address": "La zone indistruelle Ben Boulaid (devant Family Shop)",
+      "gps": "36.49196812851148,2.8424850849082146",
+      "commune_id": 901,
+      "commune_name": "Blida",
+      "wilaya_id": 9,
+      "wilaya_name": "Blida"
+    },
+    {
+      "center_id": 92001,
+      "name": "Agence de Boufarik [Guepex]",
+      "address": "64 Rue Si Ben Youcef",
+      "gps": "36.57409336434954,2.9140737574757805",
+      "commune_id": 920,
+      "commune_name": "Boufarik",
+      "wilaya_id": 9,
+      "wilaya_name": "Blida"
+    },
+    {
+      "center_id": 90102,
+      "name": "Agence de Bab Dzair [Guepex]",
+      "address": "21 centre d'artisans, rue d'Alger",
+      "gps": "36.472777177490215,2.8313255422774586",
+      "commune_id": 901,
+      "commune_name": "Blida",
+      "wilaya_id": 9,
+      "wilaya_name": "Blida"
+    },
+    {
+      "center_id": 92101,
+      "name": "Agence de Larbaa [Zimou-Express]",
+      "address": "Rue El Emir Khaled",
+      "gps": "36.5666270734497,3.1543977163459918",
+      "commune_id": 921,
+      "commune_name": "Larbaa",
+      "wilaya_id": 9,
+      "wilaya_name": "Blida"
+    },
+    {
+      "center_id": 90701,
+      "name": "Agence Ouled Yaich [Yalidine]",
+      "address": "Rue de la mosquée ",
+      "gps": "36.495598820799735,2.8604034367518314",
+      "commune_id": 907,
+      "commune_name": "Ouled Yaïch",
+      "wilaya_id": 9,
+      "wilaya_name": "Blida"
+    },
+    {
+      "center_id": 91601,
+      "name": "Agence Mouzaia Blida [Guepex]",
+      "address": "Quartier du marché groupe 36",
+      "gps": "36.466839890514564,2.686858928650103",
+      "commune_id": 916,
+      "commune_name": "Mouzaia",
+      "wilaya_id": 9,
+      "wilaya_name": "Blida"
+    },
+    {
+      "center_id": 101601,
+      "name": "Agence de Bouira [Yalidine]",
+      "address": "Lotissement Amar Khoudja B0 (A Gauche Du Nouveau Rond Point D'Aigle En Allant Vers Le Boulevard)",
+      "gps": "36.37042045017322,3.8758492313266446",
+      "commune_id": 1016,
+      "commune_name": "Bouira",
+      "wilaya_id": 10,
+      "wilaya_name": "Bouira"
+    },
+    {
+      "center_id": 103101,
+      "name": "Agence de Lakhdaria [Yalidine]",
+      "address": "cité si Lakhdar Derrière l'Algérienne des Eaux, À côté du laboratoire Boudina.",
+      "gps": "36.563972759374806,3.5993137308374",
+      "commune_id": 1031,
+      "commune_name": "Lakhdaria",
+      "wilaya_id": 10,
+      "wilaya_name": "Bouira"
+    },
+    {
+      "center_id": 104101,
+      "name": "Agence de Sour El Ghouzlane [Guepex]",
+      "address": "N°03 Cite Sayeh, Section 13",
+      "gps": "36.143071573354455,3.6951283180568684",
+      "commune_id": 1041,
+      "commune_name": "Sour El Ghouzlane",
+      "wilaya_id": 10,
+      "wilaya_name": "Bouira"
+    },
+    {
+      "center_id": 110101,
+      "name": "Agence de Tamanrasset (Gataâ El Oued) [Guepex]",
+      "address": "Cité Gataâ El Oued N 742 743 Commune Tamanrasset",
+      "gps": "22.78495481213817,5.517133685352839",
+      "commune_id": 1101,
+      "commune_name": "Tamanrasset",
+      "wilaya_id": 11,
+      "wilaya_name": "Tamanrasset"
+    },
+    {
+      "center_id": 110102,
+      "name": "Agence Tamanrasset (Tahaggart) [Yalidine]",
+      "address": "Tahaggart CHARKIA EN FACE MOSQUEE F.ZAHRAA ",
+      "gps": "22.791772342647075,5.519063835582057",
+      "commune_id": 1101,
+      "commune_name": "Tamanrasset",
+      "wilaya_id": 11,
+      "wilaya_name": "Tamanrasset"
+    },
+    {
+      "center_id": 110103,
+      "name": "Agence Tamanrasset (Sorro Ivolutif) [Easy&amp;Speed]",
+      "address": "حي سورو (تجزئة 505 قطعة) بلدية تامنراست",
+      "gps": "22.80004375984567,5.545667632367685",
+      "commune_id": 1101,
+      "commune_name": "Tamanrasset",
+      "wilaya_id": 11,
+      "wilaya_name": "Tamanrasset"
+    },
+    {
+      "center_id": 120101,
+      "name": "Agence de Tébessa [Yalidine]",
+      "address": "Boulevard Houari Boumediene (En Face De La Pharmacie Hazourli)",
+      "gps": "35.396636906679085,8.109079713415683",
+      "commune_id": 1201,
+      "commune_name": "Tébessa",
+      "wilaya_id": 12,
+      "wilaya_name": "Tébessa"
+    },
+    {
+      "center_id": 120301,
+      "name": "Agence Cheria Tébessa [Guepex]",
+      "address": "رقم 10مكرر التحصيص البلدي رقم 02",
+      "gps": "35.27905616702475,7.757957548028531",
+      "commune_id": 1203,
+      "commune_name": "Cheria",
+      "wilaya_id": 12,
+      "wilaya_name": "Tébessa"
+    },
+    {
+      "center_id": 120103,
+      "name": "Centre de tri Skanska Tébessa [Yalidine]",
+      "address": "Cité El Amel",
+      "gps": "35.40498213138372,8.100629186509849",
+      "commune_id": 1201,
+      "commune_name": "Tébessa",
+      "wilaya_id": 12,
+      "wilaya_name": "Tébessa"
+    },
+    {
+      "center_id": 130101,
+      "name": "Agence de Tlemcen (Bel-Air) [Guepex]",
+      "address": "Quartier Mohammed 05- BEL-AIR",
+      "gps": "34.87551290379688,-1.3211592999999997",
+      "commune_id": 1301,
+      "commune_name": "Tlemcen",
+      "wilaya_id": 13,
+      "wilaya_name": "Tlemcen"
+    },
+    {
+      "center_id": 132701,
+      "name": "Agence de Maghnia [Yalidine]",
+      "address": "Tafna N°4 Cite Perri",
+      "gps": "34.844893260256576,-1.721598911713723",
+      "commune_id": 1327,
+      "commune_name": "Maghnia",
+      "wilaya_id": 13,
+      "wilaya_name": "Tlemcen"
+    },
+    {
+      "center_id": 135001,
+      "name": "Agence Chetouane [Yalidine]",
+      "address": "Zone indistruelle",
+      "gps": "34.90893882311112,-1.2930467499547136",
+      "commune_id": 1350,
+      "commune_name": "Chetouane",
+      "wilaya_id": 13,
+      "wilaya_name": "Tlemcen"
+    },
+    {
+      "center_id": 130401,
+      "name": "Agence Remchi [Yalidine]\t",
+      "address": "Rue Adjedir Mohamed",
+      "gps": "35.06107475206156,-1.4348535740830457",
+      "commune_id": 1304,
+      "commune_name": "Remchi",
+      "wilaya_id": 13,
+      "wilaya_name": "Tlemcen"
+    },
+    {
+      "center_id": 130103,
+      "name": "Agence de Tlemcen (Mansourah) [Yalidine]",
+      "address": "Boulevard Imama (en face la piscine olympique)",
+      "gps": "34.88115577405357,-1.332723451208682",
+      "commune_id": 1301,
+      "commune_name": "Tlemcen",
+      "wilaya_id": 13,
+      "wilaya_name": "Tlemcen"
+    },
+    {
+      "center_id": 143901,
+      "name": "Agence de Tiaret [Yalidine]",
+      "address": "Rue police Amer, n 161",
+      "gps": "35.36817378579679,1.3328889101032386",
+      "commune_id": 1439,
+      "commune_name": "Tiaret",
+      "wilaya_id": 14,
+      "wilaya_name": "Tiaret"
+    },
+    {
+      "center_id": 150101,
+      "name": "Agence de Bekkar [Guepex]",
+      "address": "Cite Bekkar Classe 78 Propriete Groupe 137 (En Face Placette)",
+      "gps": "36.70517616666733,4.058703310312472",
+      "commune_id": 1501,
+      "commune_name": "Tizi Ouzou",
+      "wilaya_id": 15,
+      "wilaya_name": "Tizi Ouzou"
+    },
+    {
+      "center_id": 151101,
+      "name": "Agence de Tizi Gheniff [Guepex]",
+      "address": "Rue Fatoum Amar, Rez-De-Chaussee Btm 17, N° 02",
+      "gps": "36.59031892958808,3.7745891447025954",
+      "commune_id": 1511,
+      "commune_name": "Tizi Gheniff",
+      "wilaya_id": 15,
+      "wilaya_name": "Tizi Ouzou"
+    },
+    {
+      "center_id": 151801,
+      "name": "Agence de Azazga [Yalidine]",
+      "address": "01 Rue Djurdjura, Immeuble Ait Amara (Dépôt)",
+      "gps": "36.74390989580551,4.367373988328014",
+      "commune_id": 1518,
+      "commune_name": "Azazga",
+      "wilaya_id": 15,
+      "wilaya_name": "Tizi Ouzou"
+    },
+    {
+      "center_id": 154701,
+      "name": "Agence de Draâ Ben Khedda [Guepex]",
+      "address": "Touares 01",
+      "gps": "36.728128393643594,3.9659861144322925",
+      "commune_id": 1547,
+      "commune_name": "Draâ Ben Khedda",
+      "wilaya_id": 15,
+      "wilaya_name": "Tizi Ouzou"
+    },
+    {
+      "center_id": 150102,
+      "name": "Agence de Nouvelle Ville [Yalidine]",
+      "address": "Nouvelle ville",
+      "gps": "36.69298682328048,4.051372364416736",
+      "commune_id": 1501,
+      "commune_name": "Tizi Ouzou",
+      "wilaya_id": 15,
+      "wilaya_name": "Tizi Ouzou"
+    },
+    {
+      "center_id": 160101,
+      "name": "Sacré-Cœur [Guepex]",
+      "address": "116 Didouche Mourad,  Sacre Cœur",
+      "gps": "36.7635831801555,3.0471151913967005",
+      "commune_id": 1601,
+      "commune_name": "Alger Centre",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 161201,
+      "name": "Agence de Birkhadem [Yalidine]",
+      "address": "Cite Vergers Villa N°1",
+      "gps": "36.728714872725824,3.0553242452285136",
+      "commune_id": 1612,
+      "commune_name": "Birkhadem",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 163001,
+      "name": "Agence de Bordj El Kiffan [Yalidine]",
+      "address": "Rue 1Er Novembre 26 Cite Mimouni N 04",
+      "gps": "36.74863150288901,3.20052947265849",
+      "commune_id": 1630,
+      "commune_name": "Bordj El Kiffan",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 164301,
+      "name": "Agence de DNC [Yalidine]",
+      "address": "Cité El Ouancharis, DNC, Route de Ain Taya (En face Société générale)",
+      "gps": "36.74734575091702,3.3423594000001984",
+      "commune_id": 1643,
+      "commune_name": "Reghaïa",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 164401,
+      "name": "Agence de Aïn Benian [Guepex]",
+      "address": "19 Route Al-Jamilah, Division Kargon",
+      "gps": "36.80041848415821,2.9025755690190453",
+      "commune_id": 1644,
+      "commune_name": "Aïn Benian",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 164601,
+      "name": "Agence de Zeralda [Guepex]",
+      "address": "Local Commercial Rez De Chausser , Cite Yesswel Kouider N°01",
+      "gps": "36.71270234813457,2.8343161757238713",
+      "commune_id": 1646,
+      "commune_name": "Zeralda",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 165001,
+      "name": "Dar Diaf [Yalidine]",
+      "address": "Dar Diaf (à Côté De La Supérette Sedda)",
+      "gps": "36.76825125970716,2.964346070388397",
+      "commune_id": 1650,
+      "commune_name": "Cheraga",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 165301,
+      "name": "Agence de Draria [Guepex]",
+      "address": "Cite Darbush 145, Habitation 400, Batiment 2",
+      "gps": "36.72112076655928,2.9899307253169414",
+      "commune_id": 1653,
+      "commune_name": "Draria",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 165002,
+      "name": "Amara [Yalidine]",
+      "address": "10 Rue Ain benian partie 192 c2 Cheraga",
+      "gps": "36.77481037187472,2.9545400288360257",
+      "commune_id": 1650,
+      "commune_name": "Cheraga",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 161701,
+      "name": "Hussein Dey [Yalidine]",
+      "address": "Route Tripoli N°152",
+      "gps": "36.73593184624371,3.117008726064961",
+      "commune_id": 1617,
+      "commune_name": "Hussein Dey",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 163401,
+      "name": "Agence de Birtouta [Guepex]",
+      "address": "06 rue El Moudjahid Hamida Mouhamed (à côté de Supermarquet Saadi)",
+      "gps": "36.645369231973724,3.0043017206575358",
+      "commune_id": 1634,
+      "commune_name": "Birtouta",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 163901,
+      "name": "Agence Bordj El Bahri (Café Chergui) [Yalidine]",
+      "address": "Groupe de propriété n°3065, section 02, rez-de-chaussée, commune de Bordj El Bahri, wilaya d'Alger",
+      "gps": "36.780248835053634,3.249505410050749",
+      "commune_id": 1639,
+      "commune_name": "Bordj El Bahri",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 160902,
+      "name": "Agence Bir Mourad Rais [EasyAndSpeed]",
+      "address": "14 rue des trois, Rue des Frères Bouadou, Bir Mourad Raïs 16005",
+      "gps": "36.738515044397246,3.0539694576708545",
+      "commune_id": 1609,
+      "commune_name": "Bir Mourad Raïs",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 163302,
+      "name": "Agence Les Eucalyptus [Zimou-Express]",
+      "address": "Rue Les Eucalyptus, N°56, palais rouge",
+      "gps": "36.66934276333799,3.151980839588873",
+      "commune_id": 1633,
+      "commune_name": "Les Eucalyptus",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 164201,
+      "name": "Agence de Rouiba [Zimou-Express]",
+      "address": "Rue Hassiba Ben Bouali (chemin polyclinique)",
+      "gps": "36.73755329601874,3.280255195985044",
+      "commune_id": 1642,
+      "commune_name": "Rouïba",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 160501,
+      "name": "Agence de Bab El Oued [Guepex]",
+      "address": "107 Rue Colonel Lotfi",
+      "gps": "36.788921063414854,3.0485394932807495",
+      "commune_id": 1605,
+      "commune_name": "Bab El Oued",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 165101,
+      "name": "Agence de Ouled Fayet [Guepex]",
+      "address": "19 route du stade communal",
+      "gps": "36.731778405827896,2.9569217546192674",
+      "commune_id": 1651,
+      "commune_name": "Ouled Fayet",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 161401,
+      "name": "Agence de Baraki [Guepex]",
+      "address": "Route de Larbâa (à coté de la supérette Promo+)",
+      "gps": "36.665013766367615,3.091836877210686",
+      "commune_id": 1614,
+      "commune_name": "Baraki",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 162003,
+      "name": "Agence d'El Hamiz [EasyandSpeed]",
+      "address": "Cité les orangers Groupe A villa N°431, El Hamiz (en face le stade)",
+      "gps": "36.724635189426365,3.2386747288555875",
+      "commune_id": 1620,
+      "commune_name": "Dar El Beïda",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 162102,
+      "name": "Agence Bab Ezzouar [Yalitec]",
+      "address": "EPLF - BAB EZZOUAR",
+      "gps": "36.720456069053455,3.1842058696201057",
+      "commune_id": 1621,
+      "commune_name": "Bab Ezzouar",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 161503,
+      "name": "Agence El Harrach-Beaulieu [WeCanServices]",
+      "address": "128 RUE BOUBAGHLA Lot 08 GPE MTE N°229 Lot N°02 RDC (BEAULIEU - OUED SEMAR)",
+      "gps": "36.71195511661799,3.1575034000000004",
+      "commune_id": 1615,
+      "commune_name": "Oued Smar",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 164701,
+      "name": "Agence de Sidi Abdellah [Zimou Express]",
+      "address": "Cite 1400 local C6 Bt C6 sidi Abdallah, Alger ",
+      "gps": "36.68484547063526,2.8518868625192098",
+      "commune_id": 1647,
+      "commune_name": "Mahelma",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 161601,
+      "name": "Agence Bachdjerrah [WeCanServices]",
+      "address": "Bachdjerrah 3 derrière l’ancien APC, à environ 80 mètres du métro",
+      "gps": "36.71901560003096,3.109847971163656",
+      "commune_id": 1616,
+      "commune_name": "Bachdjerrah",
+      "wilaya_id": 16,
+      "wilaya_name": "Alger"
+    },
+    {
+      "center_id": 170501,
+      "name": "Agence de Aïn Oussara [Yalidine]",
+      "address": "Cité Mohamed Boudiaf (rue en face la BNA, à coté de douche Rebhi)",
+      "gps": "35.44999644877334,2.9044317099914543",
+      "commune_id": 1705,
+      "commune_name": "Aïn Oussara",
+      "wilaya_id": 17,
+      "wilaya_name": "Djelfa"
+    },
+    {
+      "center_id": 171401,
+      "name": "Agence de Djelfa [Yalidine]",
+      "address": "Cité Boutrifis, route de Boussaâda, lotissement 137 N 06 Immeuble Djouaf Ameur",
+      "gps": "34.6810443367391,3.277842246383707",
+      "commune_id": 1714,
+      "commune_name": "Djelfa",
+      "wilaya_id": 17,
+      "wilaya_name": "Djelfa"
+    },
+    {
+      "center_id": 180101,
+      "name": "Agence de Jijel [Yalidine]",
+      "address": "Village Mustapha RDC ROUTE SOUMMAM N°24",
+      "gps": "36.82170292619886,5.758994169977939",
+      "commune_id": 1801,
+      "commune_name": "Jijel",
+      "wilaya_id": 18,
+      "wilaya_name": "Jijel"
+    },
+    {
+      "center_id": 180501,
+      "name": "Agence de Taher [Guepex]",
+      "address": "Immeuble Des Bailleurs, Section 58, Groupement De Propriete N°111, Quartier Zemouch",
+      "gps": "36.77014887982159,5.8945063102513835",
+      "commune_id": 1805,
+      "commune_name": "Taher",
+      "wilaya_id": 18,
+      "wilaya_name": "Jijel"
+    },
+    {
+      "center_id": 180901,
+      "name": "Agence de El Milia [Guepex]",
+      "address": "Rue Boulakirba Zidane",
+      "gps": "36.74812705604037,6.27440627114814",
+      "commune_id": 1809,
+      "commune_name": "El Milia",
+      "wilaya_id": 18,
+      "wilaya_name": "Jijel"
+    },
+    {
+      "center_id": 181401,
+      "name": "Agence Jijel Kaous [Yalidine]",
+      "address": "CITÉ AMOURA MESSAOUD N°02 COMMUNE KAOUS",
+      "gps": "36.77631535560025,5.8116844576712765",
+      "commune_id": 1814,
+      "commune_name": "Kaous",
+      "wilaya_id": 18,
+      "wilaya_name": "Jijel"
+    },
+    {
+      "center_id": 190701,
+      "name": "Agence de Aïn Oulmene [Guepex]",
+      "address": "Cite 113, Immeuble Residentiel 63, Batiment 1 Rez-De-Chaussee, Entree 3",
+      "gps": "35.917576158809716,5.292095298694284",
+      "commune_id": 1907,
+      "commune_name": "Aïn Oulmene",
+      "wilaya_id": 19,
+      "wilaya_name": "Sétif"
+    },
+    {
+      "center_id": 195501,
+      "name": "Agence Maabouda [Yalidine]",
+      "address": "Cite D'Al-Ma'Bouda, Escalier 1 Du Batiment B Section 203 Groupe 77 Parcelle 5",
+      "gps": "36.18965846309601,5.391857886372733",
+      "commune_id": 1955,
+      "commune_name": "Sétif",
+      "wilaya_id": 19,
+      "wilaya_name": "Sétif"
+    },
+    {
+      "center_id": 195502,
+      "name": "Agence El Hidhab [Guepex]",
+      "address": "Cité El Hidhab, 110 Logements Participatifs, Bâtiment B, Classe 71",
+      "gps": "36.21033727296476,5.445401329161286",
+      "commune_id": 1955,
+      "commune_name": "Sétif",
+      "wilaya_id": 19,
+      "wilaya_name": "Sétif"
+    },
+    {
+      "center_id": 192601,
+      "name": "Agence de Bougaa [Guepex]",
+      "address": "Rue Mohamed Chinoune",
+      "gps": "36.33332614477243,5.0910191674128775",
+      "commune_id": 1926,
+      "commune_name": "Bougaa",
+      "wilaya_id": 19,
+      "wilaya_name": "Sétif"
+    },
+    {
+      "center_id": 193202,
+      "name": "Desk El Eulma [Yalidine]",
+      "address": "Rue Abdelaziz Khaled, n°119 (à côté du hôtel El Bez)",
+      "gps": "36.15225059777369,5.695548728857927",
+      "commune_id": 1932,
+      "commune_name": "El Eulma",
+      "wilaya_id": 19,
+      "wilaya_name": "Sétif"
+    },
+    {
+      "center_id": 194901,
+      "name": "Agence de Sétif Tinar [Zimou-Express]",
+      "address": "Cité 600 logts Tinar,cité N°04,Bt N°19,local N°17",
+      "gps": "36.17157923395763,5.499381416584906",
+      "commune_id": 1949,
+      "commune_name": "Ouled Sabor",
+      "wilaya_id": 19,
+      "wilaya_name": "Sétif"
+    },
+    {
+      "center_id": 193203,
+      "name": "Agence El Eulma Cité Sonatrach Smara S [Easy&amp;Speed] ",
+      "address": "Smara Sud, Section 14, Bloc n° 82+, Logement Participatif n° 06, Commune de El Eulma",
+      "gps": "36.15150000000002,5.667",
+      "commune_id": 1932,
+      "commune_name": "El Eulma",
+      "wilaya_id": 19,
+      "wilaya_name": "Sétif"
+    },
+    {
+      "center_id": 201101,
+      "name": "Agence de Saïda [Yalidine]",
+      "address": "cité Riadh (à coté de la mosquée Riadh)",
+      "gps": "34.84330195332345,0.15648539493396532",
+      "commune_id": 2011,
+      "commune_name": "Saïda",
+      "wilaya_id": 20,
+      "wilaya_name": "Saïda"
+    },
+    {
+      "center_id": 210501,
+      "name": "Agence de Azzaba [Guepex]",
+      "address": "Enseigne Cite Za'Af Rabeh",
+      "gps": "36.73820784300283,7.103309891478236",
+      "commune_id": 2105,
+      "commune_name": "Azzaba",
+      "wilaya_id": 21,
+      "wilaya_name": "Skikda"
+    },
+    {
+      "center_id": 211401,
+      "name": "Agence de Collo [Guepex]",
+      "address": "Boulevard  Ruwaibah Taher",
+      "gps": "37.00947083691242,6.56541830758666",
+      "commune_id": 2114,
+      "commune_name": "Collo",
+      "wilaya_id": 21,
+      "wilaya_name": "Skikda"
+    },
+    {
+      "center_id": 211801,
+      "name": "Agence de El Harrouch [Guepex]",
+      "address": "Cite 24 Logements Sociaux Covalent Sonatiba",
+      "gps": "36.652696909280046,6.842743529091004",
+      "commune_id": 2118,
+      "commune_name": "El Harrouch",
+      "wilaya_id": 21,
+      "wilaya_name": "Skikda"
+    },
+    {
+      "center_id": 213502,
+      "name": "Nouvelle Agence Skikda L'espérance [Yalidine]",
+      "address": "Rue El Reboua El Djamila, partie N°01 rez-de-chaussée",
+      "gps": "36.873354511972565,6.904929615263629",
+      "commune_id": 2135,
+      "commune_name": "Skikda",
+      "wilaya_id": 21,
+      "wilaya_name": "Skikda"
+    },
+    {
+      "center_id": 213503,
+      "name": "Agence de Skikda Faubourg [Guepex]",
+      "address": "Rue Bachir BOUKADOUM BT 06 local N° 1",
+      "gps": "36.86915957909143,6.907464813490152",
+      "commune_id": 2135,
+      "commune_name": "Skikda",
+      "wilaya_id": 21,
+      "wilaya_name": "Skikda"
+    },
+    {
+      "center_id": 223601,
+      "name": "Agence de Sidi Bel Abbes [Yalidine]",
+      "address": "Rue Mascara, (à cote de l'hotel Beni Talla)",
+      "gps": "35.18434154452605,-0.6141983368596451",
+      "commune_id": 2236,
+      "commune_name": "Sidi Bel Abbes",
+      "wilaya_id": 22,
+      "wilaya_name": "Sidi Bel Abbès"
+    },
+    {
+      "center_id": 223602,
+      "name": "Agence Sidi Bel Abbès Benhamouda [Guepex]",
+      "address": "Benhamouda, (monté Sogral avant la mosquée El Safaa)",
+      "gps": "35.22229568347109,-0.6257365146791259",
+      "commune_id": 2236,
+      "commune_name": "Sidi Bel Abbes",
+      "wilaya_id": 22,
+      "wilaya_name": "Sidi Bel Abbès"
+    },
+    {
+      "center_id": 230101,
+      "name": "Agence de Valmascort [Yalidine]",
+      "address": "Avenue Seddik Benyahia Résidence * Fadi el Djamal *",
+      "gps": "36.917000917596404,7.7527438280073016",
+      "commune_id": 2301,
+      "commune_name": "Annaba",
+      "wilaya_id": 23,
+      "wilaya_name": "Annaba"
+    },
+    {
+      "center_id": 230501,
+      "name": "Agence de El Bouni [Guepex]",
+      "address": "Section 1 Groupe 63 Propriete 246",
+      "gps": "36.85634274671219,7.7483953860755985",
+      "commune_id": 2305,
+      "commune_name": "El Bouni",
+      "wilaya_id": 23,
+      "wilaya_name": "Annaba"
+    },
+    {
+      "center_id": 230102,
+      "name": "Agence de Sidi Brahim [Guepex]",
+      "address": "Champs de mars numéro n°3",
+      "gps": "36.89262144958703,7.752825084569422",
+      "commune_id": 2301,
+      "commune_name": "Annaba",
+      "wilaya_id": 23,
+      "wilaya_name": "Annaba"
+    },
+    {
+      "center_id": 230103,
+      "name": "Agence Sidi Achour GHANZOH EXPRESS By YALIDINE",
+      "address": "إقامة المنظر الجميل, Rte de Sidi Achour, Annaba",
+      "gps": "36.885157221183945,7.71491466148644",
+      "commune_id": 2301,
+      "commune_name": "Annaba",
+      "wilaya_id": 23,
+      "wilaya_name": "Annaba"
+    },
+    {
+      "center_id": 243001,
+      "name": "Agence de Oued Zenati [Guepex]",
+      "address": "Magasin Num 02",
+      "gps": "36.30792321013235,7.160464035448827",
+      "commune_id": 2430,
+      "commune_name": "Oued Zenati",
+      "wilaya_id": 24,
+      "wilaya_name": "Guelma"
+    },
+    {
+      "center_id": 241901,
+      "name": "Nouvelle Agence Guelma [Yalidine]",
+      "address": "route Ain Larbi, local N°01",
+      "gps": "36.45597784442608,7.426379566015017",
+      "commune_id": 2419,
+      "commune_name": "Guelma",
+      "wilaya_id": 24,
+      "wilaya_name": "Guelma"
+    },
+    {
+      "center_id": 250401,
+      "name": "Agence Belle Vue [Yalidine]",
+      "address": "70 Rue Belle Vue, Les Combattants (Ancienne Ville)",
+      "gps": "36.3529999173718,6.608103735250445",
+      "commune_id": 2504,
+      "commune_name": "Constantine",
+      "wilaya_id": 25,
+      "wilaya_name": "Constantine"
+    },
+    {
+      "center_id": 250601,
+      "name": "Agence d'El Khroub [Guepex]",
+      "address": "Cité Bouhali Mohamed Said El Khroub",
+      "gps": "36.264496940142756,6.689403542328722",
+      "commune_id": 2506,
+      "commune_name": "El Khroub",
+      "wilaya_id": 25,
+      "wilaya_name": "Constantine"
+    },
+    {
+      "center_id": 250602,
+      "name": "Agence Nouvelle ville Ali Mendjeli [Yalidine]",
+      "address": "Zone d'Activité N°47 Nouvelle Ville, Ali MENDJLI",
+      "gps": "36.25992159231852,6.593449177806023",
+      "commune_id": 2506,
+      "commune_name": "El Khroub",
+      "wilaya_id": 25,
+      "wilaya_name": "Constantine"
+    },
+    {
+      "center_id": 250501,
+      "name": "Agence de Didouche Mourad [Yalidine]",
+      "address": "El Riadh n°10",
+      "gps": "36.44833167015881,6.630756215108476",
+      "commune_id": 2505,
+      "commune_name": "Didouche Mourad",
+      "wilaya_id": 25,
+      "wilaya_name": "Constantine"
+    },
+    {
+      "center_id": 250402,
+      "name": "Agence Sidi Mabrouk [Guepex]",
+      "address": "نهج لعراقب احمد رقم 09",
+      "gps": "36.36117011786894,6.636566271164361",
+      "commune_id": 2504,
+      "commune_name": "Constantine",
+      "wilaya_id": 25,
+      "wilaya_name": "Constantine"
+    },
+    {
+      "center_id": 250605,
+      "name": "Agence Nouvelle Ville [Guepex]",
+      "address": "650 lpa عمارة 24 زاوية محل 145 ",
+      "gps": "36.22914576332777,6.5751325423287215",
+      "commune_id": 2506,
+      "commune_name": "El Khroub",
+      "wilaya_id": 25,
+      "wilaya_name": "Constantine"
+    },
+    {
+      "center_id": 250403,
+      "name": "Agence de Constantine Zouaghi [Zimou Express]",
+      "address": "Illot N°01 , 212, ain el bay, zouaghi, Constantine ",
+      "gps": "36.31233464226101,6.625446226981942",
+      "commune_id": 2504,
+      "commune_name": "Constantine",
+      "wilaya_id": 25,
+      "wilaya_name": "Constantine"
+    },
+    {
+      "center_id": 263301,
+      "name": "Agence de Médéa El Koutab [Yalidine]",
+      "address": "Hai El Koutab Médéa (En face boutique Dyelna Shop)",
+      "gps": "36.275393392468935,2.7702085400567786",
+      "commune_id": 2633,
+      "commune_name": "Médéa",
+      "wilaya_id": 26,
+      "wilaya_name": "Médéa"
+    },
+    {
+      "center_id": 263302,
+      "name": "Agence de Médéa Pole Urbain [Guepex]",
+      "address": "Cité 80 Logs LSP Pole Urbain (à coté de la station de service Benhafri)",
+      "gps": "36.267663838556054,2.7906953509033734",
+      "commune_id": 2633,
+      "commune_name": "Médéa",
+      "wilaya_id": 26,
+      "wilaya_name": "Médéa"
+    },
+    {
+      "center_id": 265901,
+      "name": "Agence Tablat [Yalidine]",
+      "address": "rue nationale N 08",
+      "gps": "36.40665669612093,3.3224722",
+      "commune_id": 2659,
+      "commune_name": "Tablat",
+      "wilaya_id": 26,
+      "wilaya_name": "Médéa"
+    },
+    {
+      "center_id": 260701,
+      "name": "Agence Médéa Beni Slimane [Yalidine]",
+      "address": "مجموعة ملكية رقم 44 قسم 44 بالتجزئة 55 حصة بني سليمان",
+      "gps": "36.228267439084156,3.310825256843856",
+      "commune_id": 2607,
+      "commune_name": "Beni Slimane",
+      "wilaya_id": 26,
+      "wilaya_name": "Médéa"
+    },
+    {
+      "center_id": 271801,
+      "name": "Salamandre [Yalidine]",
+      "address": "Salamandre (Rond Point De La Douane)",
+      "gps": "35.9213552114013,0.07318708477898198",
+      "commune_id": 2718,
+      "commune_name": "Mostaganem",
+      "wilaya_id": 27,
+      "wilaya_name": "Mostaganem"
+    },
+    {
+      "center_id": 271802,
+      "name": "Kharouba [Guepex]",
+      "address": "Cité 600 logement Kharouba Mostaganem",
+      "gps": "35.975042654997694,0.10676934149873608",
+      "commune_id": 2718,
+      "commune_name": "Mostaganem",
+      "wilaya_id": 27,
+      "wilaya_name": "Mostaganem"
+    },
+    {
+      "center_id": 281001,
+      "name": "Agence de Berhoum [Guepex]",
+      "address": "محل رقم 03 مجموعة ملكية 333 قسم 02 حي زيغود يوسف بلدية برهوم",
+      "gps": "35.65709385298696,5.030348826732219",
+      "commune_id": 2810,
+      "commune_name": "Berhoum",
+      "wilaya_id": 28,
+      "wilaya_name": "M'Sila"
+    },
+    {
+      "center_id": 281201,
+      "name": "Agence de Bou Saâda [Yalidine]",
+      "address": "Cite 20 Aout 636/N°05 A",
+      "gps": "35.22031324045397,4.178352103974209",
+      "commune_id": 2812,
+      "commune_name": "Bou Saâda",
+      "wilaya_id": 28,
+      "wilaya_name": "M'Sila"
+    },
+    {
+      "center_id": 282802,
+      "name": "Agence Salem Shopping Mall [Yalidine]",
+      "address": "Salem Shopping Mall, centre commercial (en face la daïra)",
+      "gps": "35.711826195939764,4.533467813415232",
+      "commune_id": 2828,
+      "commune_name": "M'Sila",
+      "wilaya_id": 28,
+      "wilaya_name": "M'Sila"
+    },
+    {
+      "center_id": 283901,
+      "name": "Agence Sidi Aïssa [Guepex]",
+      "address": "بلدية سيدي عيسى E03 محل 07 حي الوئام المدني مجموعة ملكية 05 قسم 46 عمارة",
+      "gps": "35.872334331109606,3.7830036541912944",
+      "commune_id": 2839,
+      "commune_name": "Sidi Aïssa",
+      "wilaya_id": 28,
+      "wilaya_name": "M'Sila"
+    },
+    {
+      "center_id": 292801,
+      "name": "Agence de Mascara [Yalidine]",
+      "address": "zone 08 a coté de la poste Emir Abdelkader",
+      "gps": "35.401212227438585,0.1493982676612564",
+      "commune_id": 2928,
+      "commune_name": "Mascara",
+      "wilaya_id": 29,
+      "wilaya_name": "Mascara"
+    },
+    {
+      "center_id": 300801,
+      "name": "Agence de Hassi Messaoud [Yalidine]",
+      "address": "Derrière la CNAS, à coté de la clinique Ibn Sina",
+      "gps": "31.688989360431812,6.068568678310962",
+      "commune_id": 3008,
+      "commune_name": "Hassi Messaoud",
+      "wilaya_id": 30,
+      "wilaya_name": "Ouargla"
+    },
+    {
+      "center_id": 301301,
+      "name": "Agence de Ouargla Centre ville [Guepex]",
+      "address": "حي حركات",
+      "gps": "31.96296665406084,5.324182871163383",
+      "commune_id": 3013,
+      "commune_name": "Ouargla",
+      "wilaya_id": 30,
+      "wilaya_name": "Ouargla"
+    },
+    {
+      "center_id": 301302,
+      "name": "Agence de Ouargla (Chetti el wekal) [Yalidine]",
+      "address": "Ave 1er novembre 1954, El Mkhadma, (Arrêt de tram Chatte El Wakla)",
+      "gps": "31.942699293799976,5.312770721210608",
+      "commune_id": 3013,
+      "commune_name": "Ouargla",
+      "wilaya_id": 30,
+      "wilaya_name": "Ouargla"
+    },
+    {
+      "center_id": 310301,
+      "name": "El Morchid [Yalidine]",
+      "address": "Cooperative Immobiliere Dar El Amel N°68",
+      "gps": "35.710492588656976,-0.5869307488573879",
+      "commune_id": 3103,
+      "commune_name": "Bir El Djir",
+      "wilaya_id": 31,
+      "wilaya_name": "Oran"
+    },
+    {
+      "center_id": 310601,
+      "name": "Agence de Arzew [Guepex]",
+      "address": " 17 Lotissement N 66 Plan Lot 167",
+      "gps": "35.84733672313886,-0.31784657704458",
+      "commune_id": 3106,
+      "commune_name": "Arzew",
+      "wilaya_id": 31,
+      "wilaya_name": "Oran"
+    },
+    {
+      "center_id": 310302,
+      "name": "Agence Fernand Ville [Yalidine]",
+      "address": "65 Rue 1er Novembre Hai Khemisti ,part 4 (Mosquée el kods)",
+      "gps": "35.730398307760176,-0.5790437244693557",
+      "commune_id": 3103,
+      "commune_name": "Bir El Djir",
+      "wilaya_id": 31,
+      "wilaya_name": "Oran"
+    },
+    {
+      "center_id": 310101,
+      "name": "Saint Hubert [Yalidine]",
+      "address": "Rue de l'ANP Projet rue 153 GV 50-89 part 2 et 3 (Entre CPA ET CASNOS)",
+      "gps": "35.67576049674193,-0.6399573752101966",
+      "commune_id": 3101,
+      "commune_name": "Oran",
+      "wilaya_id": 31,
+      "wilaya_name": "Oran"
+    },
+    {
+      "center_id": 310102,
+      "name": "Cité Djamel [Guepex]",
+      "address": "Rond-point cité Djamel (en allant vers Hai Sabah)",
+      "gps": "35.69672884038709,-0.6024611501953713",
+      "commune_id": 3101,
+      "commune_name": "Oran",
+      "wilaya_id": 31,
+      "wilaya_name": "Oran"
+    },
+    {
+      "center_id": 310103,
+      "name": "Agence de Gambetta [Zimou-Express]",
+      "address": "54 avenue d'arcole, Bouguerri Khelifa, Gambetta",
+      "gps": "35.70584160555386,-0.6116408828756563",
+      "commune_id": 3101,
+      "commune_name": "Oran",
+      "wilaya_id": 31,
+      "wilaya_name": "Oran"
+    },
+    {
+      "center_id": 310303,
+      "name": "Agence ILAF Belkaïd Oran [EasyAndSpeed]",
+      "address": "Groupe 122 Logement - résidence ILAF Belkaïd",
+      "gps": "35.74383317481581,-0.5439541698194157",
+      "commune_id": 3103,
+      "commune_name": "Bir El Djir",
+      "wilaya_id": 31,
+      "wilaya_name": "Oran"
+    },
+    {
+      "center_id": 320101,
+      "name": "Agence de El Bayadh [Yalidine]",
+      "address": "Rue Mohamed Touil (A Cote Auberge Hanna)",
+      "gps": "33.68182465412115,1.0147081430506253",
+      "commune_id": 3201,
+      "commune_name": "El Bayadh",
+      "wilaya_id": 32,
+      "wilaya_name": "El Bayadh"
+    },
+    {
+      "center_id": 330101,
+      "name": "Agence de Illizi [Guepex]",
+      "address": "Chemin Ain El Kours Cite Salam",
+      "gps": "26.506170413905355,8.489622372352972",
+      "commune_id": 3301,
+      "commune_name": "Illizi",
+      "wilaya_id": 33,
+      "wilaya_name": "Illizi"
+    },
+    {
+      "center_id": 330601,
+      "name": "Agence In Amenas [Guepex]",
+      "address": "القسم 12 مجموعة ملكية 56-342 مسكن بلدية ان اميناس",
+      "gps": "28.050180003262113,9.578835500000002",
+      "commune_id": 3306,
+      "commune_name": "In Amenas",
+      "wilaya_id": 33,
+      "wilaya_name": "Illizi"
+    },
+    {
+      "center_id": 340601,
+      "name": "Agence de El Djebasse [Yalidine]",
+      "address": "cite 1er novembre 1954, 90 logements numéro 42",
+      "gps": "36.07358095544724,4.769126075519668",
+      "commune_id": 3406,
+      "commune_name": "Bordj Bou Arreridj",
+      "wilaya_id": 34,
+      "wilaya_name": "Bordj Bou Arreridj"
+    },
+    {
+      "center_id": 340603,
+      "name": "Agence BBA Nouveau Lycée [Guepex]",
+      "address": "محلات تجارية الطيب خيرة قسم 118 مم 66 بورج بوعريريج 0",
+      "gps": "36.06763941313039,4.751931084654626",
+      "commune_id": 3406,
+      "commune_name": "Bordj Bou Arreridj",
+      "wilaya_id": 34,
+      "wilaya_name": "Bordj Bou Arreridj"
+    },
+    {
+      "center_id": 350101,
+      "name": "Agence de Boumerdès [Yalidine]",
+      "address": "Cité Foés bâtiment B local N°04 ",
+      "gps": "36.75100407593048,3.457471537963522",
+      "commune_id": 3501,
+      "commune_name": "Boumerdes",
+      "wilaya_id": 35,
+      "wilaya_name": "Boumerdès"
+    },
+    {
+      "center_id": 350501,
+      "name": "Agence de Bordj Menaiel [Guepex]",
+      "address": "Rue Bouira Boualem, Section 02 Magasin 02",
+      "gps": "36.73815152136307,3.7220183039667347",
+      "commune_id": 3505,
+      "commune_name": "Bordj Menaiel",
+      "wilaya_id": 35,
+      "wilaya_name": "Boumerdès"
+    },
+    {
+      "center_id": 350201,
+      "name": "Agence Boudouaou [Guepex]",
+      "address": "مشروع 36 مسكن ترقوي اجتماعي عمارة ا حصة 13 طابق ارضي بن عجال بودواو ولاية بومرداس",
+      "gps": "36.7364177711616,3.3991148600692713",
+      "commune_id": 3502,
+      "commune_name": "Boudouaou",
+      "wilaya_id": 35,
+      "wilaya_name": "Boumerdès"
+    },
+    {
+      "center_id": 353601,
+      "name": "agence Hammedi [WeCanServices]",
+      "address": "hammedi centre ville",
+      "gps": "36.67993548309194,3.2586671865098484",
+      "commune_id": 3536,
+      "commune_name": "Hammedi",
+      "wilaya_id": 35,
+      "wilaya_name": "Boumerdès"
+    },
+    {
+      "center_id": 361701,
+      "name": "Agence de El Tarf [Yalidine]",
+      "address": "Rue N°44 Cite Les Vergers",
+      "gps": "36.7670884594558,8.308140442356349",
+      "commune_id": 3617,
+      "commune_name": "El Tarf",
+      "wilaya_id": 36,
+      "wilaya_name": "El Tarf"
+    },
+    {
+      "center_id": 361301,
+      "name": "Agence Dréan El Tarf [Yalidine]",
+      "address": "Rue lmzaouda al-arbi el dréan",
+      "gps": "36.684014174423325,7.748788786509849",
+      "commune_id": 3613,
+      "commune_name": "Dréan",
+      "wilaya_id": 36,
+      "wilaya_name": "El Tarf"
+    },
+    {
+      "center_id": 370201,
+      "name": "Agence de Tindouf [Yalidine]",
+      "address": "Cites Moussani (A Cote De La Radio)",
+      "gps": "27.66861750577877,-8.142957799721954",
+      "commune_id": 3702,
+      "commune_name": "Tindouf",
+      "wilaya_id": 37,
+      "wilaya_name": "Tindouf"
+    },
+    {
+      "center_id": 382101,
+      "name": "Agence de Tissemsilt [Yalidine]",
+      "address": "Rue Bouis Ali Num 33  B Section 067 Groupe De Propriete 048",
+      "gps": "35.60941808703387,1.8098678288304073",
+      "commune_id": 3821,
+      "commune_name": "Tissemsilt",
+      "wilaya_id": 38,
+      "wilaya_name": "Tissemsilt"
+    },
+    {
+      "center_id": 390101,
+      "name": "Agence de El Oued [Yalidine]",
+      "address": "Cite El Moudjahidine (en face Pharmacie Daghoum)",
+      "gps": "33.35200172931514,6.853196485244896",
+      "commune_id": 3901,
+      "commune_name": "El Oued",
+      "wilaya_id": 39,
+      "wilaya_name": "El Oued"
+    },
+    {
+      "center_id": 401302,
+      "name": "Agence route de Meskiana [Yalidine]",
+      "address": "Route de Meskiana N°30 lot 66 Khenchela",
+      "gps": "35.43154087131633,7.150444186509847",
+      "commune_id": 4013,
+      "commune_name": "Khenchela",
+      "wilaya_id": 40,
+      "wilaya_name": "Khenchela"
+    },
+    {
+      "center_id": 410101,
+      "name": "Agence de Souk Ahras [Yalidine]",
+      "address": "Cité El Louz Lot 64 (les amandiers)",
+      "gps": "36.27400574751086,7.954879870917144",
+      "commune_id": 4101,
+      "commune_name": "Souk Ahras",
+      "wilaya_id": 41,
+      "wilaya_name": "Souk Ahras"
+    },
+    {
+      "center_id": 420101,
+      "name": "Agence Tipaza [Yalidine]",
+      "address": "24 cite M'hamed Bougara (El Garari)",
+      "gps": "36.5878925852878,2.439693415722701",
+      "commune_id": 4201,
+      "commune_name": "Tipaza",
+      "wilaya_id": 42,
+      "wilaya_name": "Tipaza"
+    },
+    {
+      "center_id": 423501,
+      "name": "Agence Koléa [Guepex]",
+      "address": "koléa , lotissement amara n°1 route de fouka (en face CEM noureddine bouguera)",
+      "gps": "36.64581758047096,2.7600519959998246",
+      "commune_id": 4235,
+      "commune_name": "Koléa",
+      "wilaya_id": 42,
+      "wilaya_name": "Tipaza"
+    },
+    {
+      "center_id": 421201,
+      "name": "Agence Hadjout Rue de stade [Easy&amp;speed]",
+      "address": "Rue de stade RDC Hadjout, Tipaza",
+      "gps": "36.516211255024885,2.4099873153425557",
+      "commune_id": 4212,
+      "commune_name": "Hadjout",
+      "wilaya_id": 42,
+      "wilaya_name": "Tipaza"
+    },
+    {
+      "center_id": 422201,
+      "name": "Agence Cherchell [Guepex]",
+      "address": "N°05 Rue MELHANI ABDERRAHMAN ",
+      "gps": "36.60585555938602,2.1906684576712783",
+      "commune_id": 4222,
+      "commune_name": "Cherchell",
+      "wilaya_id": 42,
+      "wilaya_name": "Tipaza"
+    },
+    {
+      "center_id": 430801,
+      "name": "Agence de Chelghoum Laid [Yalidine]",
+      "address": "Rue 01 Novembre, A Côté D'Hôtel El Rhumel",
+      "gps": "36.1590068466165,6.160283164642531",
+      "commune_id": 4308,
+      "commune_name": "Chelghoum Laid",
+      "wilaya_id": 43,
+      "wilaya_name": "Mila"
+    },
+    {
+      "center_id": 431601,
+      "name": "Agence de Mila [Yalidine]",
+      "address": "Rue De Zerghia (A Coté Du Point De Vente Iris Et Gam Assurance)",
+      "gps": "36.45296552261307,6.2564604692148205",
+      "commune_id": 4316,
+      "commune_name": "Mila",
+      "wilaya_id": 43,
+      "wilaya_name": "Mila"
+    },
+    {
+      "center_id": 440101,
+      "name": "Agence de Aïn Defla [Guepex]",
+      "address": "Cite Khyat Mohammed (L’Arret De La Zone Industrielle En Face La Pompe d'essence)",
+      "gps": "36.25140783716136,1.9415038000000007",
+      "commune_id": 4401,
+      "commune_name": "Aïn Defla",
+      "wilaya_id": 44,
+      "wilaya_name": "Aïn Defla"
+    },
+    {
+      "center_id": 442601,
+      "name": "Agence de Khemis Miliana [Guepex]",
+      "address": "Le Cote Ouest Du Quartier La Cadette Route Nationale",
+      "gps": "36.26046455568064,2.202986246810656",
+      "commune_id": 4426,
+      "commune_name": "Khemis Miliana",
+      "wilaya_id": 44,
+      "wilaya_name": "Aïn Defla"
+    },
+    {
+      "center_id": 450201,
+      "name": "Agence de Mecheria [Guepex]",
+      "address": "Rue Abdellaoui Mohammed Cité Iben Badis  (Connue Hadj Taleb, Près De Pharmacie Abbad Amina Et École Primaire)",
+      "gps": "33.54236058678445,-0.28489289145698227",
+      "commune_id": 4502,
+      "commune_name": "Mecheria",
+      "wilaya_id": 45,
+      "wilaya_name": "Naâma"
+    },
+    {
+      "center_id": 460401,
+      "name": "Agence de Aïn Témouchent [Yalidine]",
+      "address": "Sonne n5/ n 605/ d 228 logements, Hai Zitoun (à coté de la nouvelle agence de transport)",
+      "gps": "35.31160813323017,-1.1468406674238103",
+      "commune_id": 4604,
+      "commune_name": "Aïn Témouchent",
+      "wilaya_id": 46,
+      "wilaya_name": "Aïn Témouchent"
+    },
+    {
+      "center_id": 460701,
+      "name": "Agence de Beni Saf [Guepex]",
+      "address": "Cité Sohbi, zone urbaine (en face de la pompe d'essence)",
+      "gps": "35.30573507836949,-1.3524657019668493",
+      "commune_id": 4607,
+      "commune_name": "Beni Saf",
+      "wilaya_id": 46,
+      "wilaya_name": "Aïn Témouchent"
+    },
+    {
+      "center_id": 470701,
+      "name": "Agence de Ghardaïa Thenia [Guepex]",
+      "address": "Ghardaïa Thenia a coté de lycé mofdi zakaria ",
+      "gps": "32.51422379314845,3.680928631621788",
+      "commune_id": 4707,
+      "commune_name": "Ghardaïa",
+      "wilaya_id": 47,
+      "wilaya_name": "Ghardaïa"
+    },
+    {
+      "center_id": 470702,
+      "name": "Agence de Bouhraoua [Yalidine]",
+      "address": "Bouhraoua (en face centre d'exposition)",
+      "gps": "32.518556971150865,3.6696240790628734",
+      "commune_id": 4707,
+      "commune_name": "Ghardaïa",
+      "wilaya_id": 47,
+      "wilaya_name": "Ghardaïa"
+    },
+    {
+      "center_id": 483001,
+      "name": "Agence de Relizane [Yalidine]",
+      "address": "Boulevard 69 Zaghloul (en face la banque d'Algérie)",
+      "gps": "35.74256254570214,0.5546923698242852",
+      "commune_id": 4830,
+      "commune_name": "Relizane",
+      "wilaya_id": 48,
+      "wilaya_name": "Relizane"
+    },
+    {
+      "center_id": 490901,
+      "name": "Agence de Timimoun [Yalidine]",
+      "address": "Rue Mohamed El Hashemi",
+      "gps": "29.25928043831401,0.23095582639144044",
+      "commune_id": 4909,
+      "commune_name": "Timimoun",
+      "wilaya_id": 49,
+      "wilaya_name": "Timimoun"
+    },
+    {
+      "center_id": 512601,
+      "name": "Agence de Ouled Djellal [Yalidine]\t",
+      "address": "Rue Gasmi Ibrahim (En Face Ecole Mazen School)",
+      "gps": "34.43692622498558,5.069068600603627",
+      "commune_id": 5126,
+      "commune_name": "Ouled Djellal",
+      "wilaya_id": 51,
+      "wilaya_name": "Ouled Djellal"
+    },
+    {
+      "center_id": 530801,
+      "name": "Agence de In Salah [Yalidine]\t",
+      "address": "Centre ville (à coté de la poste et la maison de jeune)",
+      "gps": "27.1977485821485,2.4788359630505163",
+      "commune_id": 5308,
+      "commune_name": "In Salah",
+      "wilaya_id": 53,
+      "wilaya_name": "In Salah"
+    },
+    {
+      "center_id": 552001,
+      "name": "Agence de Touggourt [Yalidine]",
+      "address": "Cite Rimal 01 (A Cote De La Pharmacie Harkati Route Nationale N°03)",
+      "gps": "33.10026087453198,6.052441603706706",
+      "commune_id": 5520,
+      "commune_name": "Touggourt",
+      "wilaya_id": 55,
+      "wilaya_name": "Touggourt"
+    },
+    {
+      "center_id": 560201,
+      "name": "Agence de Djanet [Guepex]",
+      "address": "Tin Khatma",
+      "gps": "24.55986182082406,9.481856717098914",
+      "commune_id": 5602,
+      "commune_name": "Djanet",
+      "wilaya_id": 56,
+      "wilaya_name": "Djanet"
+    },
+    {
+      "center_id": 572701,
+      "name": "Agence de El M'Ghair [Yalidine]",
+      "address": "Lotissement 360 Logements Nouvelle Zone Urbaine",
+      "gps": "33.95575864498291,5.908902723517538",
+      "commune_id": 5727,
+      "commune_name": "El M'Ghair",
+      "wilaya_id": 57,
+      "wilaya_name": "El M'Ghair"
+    },
+    {
+      "center_id": 572801,
+      "name": "Agence de Djamaa [Guepex]",
+      "address": "Cite Essalam (A Cote Du Clinique Douaa)",
+      "gps": "33.53384327436235,5.983139975719593",
+      "commune_id": 5728,
+      "commune_name": "Djamaa",
+      "wilaya_id": 57,
+      "wilaya_name": "El M'Ghair"
+    },
+    {
+      "center_id": 580601,
+      "name": "Agence de El Menia [Yalidine]",
+      "address": "Route Unite Africaine",
+      "gps": "30.578857742061352,2.8802528030169148",
+      "commune_id": 5806,
+      "commune_name": "El Menia",
+      "wilaya_id": 58,
+      "wilaya_name": "El Menia"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+# ===============================================
+# MaxiStore — racine du monorepo
+# ===============================================
+
+node_modules/
+**/node_modules/
+
+# Environnement (ne JAMAIS committer)
+.env
+.env.local
+.env.*.local
+**/.env
+**/.env.local
+!**/.env.example
+!**/.env.*.example
+
+# Build
+**/.next/
+**/out/
+**/dist/
+**/build/
+**/.turbo/
+**/tsconfig.tsbuildinfo
+**/next-env.d.ts
+
+# Logs
+**/logs/
+*.log
+npm-debug.log*
+pm2-*.log
+
+# Uploads utilisateur (contenu runtime, pas du code)
+backend/uploads/**
+!backend/uploads/**/.gitkeep
+
+# Base de donnees locale
+*.sqlite
+*.db
+backend/db
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Tests / rapports
+coverage/
+# Resultats de tests de charge : artefacts de sortie, pas du code.
+# Le motif doit commencer par **/ car ces fichiers vivent sous backend/k6/ :
+# un motif ancre a la racine (« k6/results/*.json ») ne les atteint pas et
+# laissait passer un results.json de 26 Mo.
+**/k6/results/
+!**/k6/results/.gitkeep
+
+# Docker
+docker-compose.override.yml

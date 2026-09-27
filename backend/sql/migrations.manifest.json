@@ -1,0 +1,78 @@
+{
+  "$comment": [
+    "Ordre canonique d'application du schema. Source de verite unique, lue par",
+    "backend/scripts/apply-schema.mjs.",
+    "",
+    "L'ordre n'est PAS alphabetique. Trois contraintes imposees par le contenu",
+    "des fichiers le rendent obligatoire :",
+    "  1. `000` doit preceder `001`, car `001_schema.sql` cree des cles",
+    "     etrangeres vers `wilayas`/`communes` qu'il ne definit plus lui-meme.",
+    "  2. `005` doit preceder `003`, car `003_guepex_migration.sql` reference les",
+    "     tables `guepex_*` creees par `005_guepex_shipping_tables.sql`.",
+    "  3. `002c` et `003` doivent preceder `008`, et `008` preceder `010`, car",
+    "     `008` recopie `orders.commune_id` vers `orders.delivery_commune_id`",
+    "     (colonne creee par `003`), puis `010` supprime `orders.commune_id`.",
+    "Pour cette raison, le dossier ne peut pas etre monte dans",
+    "`docker-entrypoint-initdb.d`, qui applique les fichiers par ordre",
+    "alphabetique."
+  ],
+
+  "migrations": [
+    { "file": "000_bootstrap_reference_tables.sql", "note": "Tables de reference shipping exigees par les FK de 001." },
+    { "file": "001_schema.sql", "note": "Schema de base : types ENUM et tables." },
+    { "file": "002_add_notifications.sql", "note": "Notifications." },
+    { "file": "002_views.sql", "note": "Vues active_* et vues statistiques." },
+    { "file": "002c_add_orders_commune_id.sql", "note": "Colonne transitoire attendue par 008 puis supprimee par 010." },
+    { "file": "004_add_return_statuses.sql", "note": "Valeurs supplementaires de l'ENUM order_status." },
+    { "file": "005_guepex_shipping_tables.sql", "note": "Tables guepex_* alimentees par l'API Guepex." },
+    { "file": "003_guepex_migration.sql", "note": "Colonnes de livraison sur orders. Apres 005 (depend des tables guepex_*)." },
+    { "file": "007_add_warehouses_fk.sql", "note": "warehouses.wilaya_id -> guepex_wilayas." },
+    { "file": "008_comprehensive_fixes.sql", "note": "Corrections diverses, dont la recopie de orders.commune_id." },
+    { "file": "006_create_standard_views.sql", "note": "Vues wilayas/communes/centers au-dessus de guepex_*. Apres 008 (depend de delivery_wilaya_id)." },
+    { "file": "009_add_awaiting_confirmation_status.sql", "note": "order_status + awaiting_confirmation." },
+    { "file": "010_optimize_orders_table.sql", "note": "Renomme guepex_tracking_number en tracking_number, supprime orders.commune_id." },
+    { "file": "020_create_idempotency_keys.sql", "note": "Cles d'idempotence." },
+    { "file": "021_create_stock_movements.sql", "note": "Mouvements de stock." },
+    { "file": "022_add_wholesale_price.sql", "note": "products.wholesale_price." },
+    { "file": "023_product_variants_and_collections.sql", "note": "product_variants, collections, collection_products, colonnes de promotions." }
+  ],
+
+  "excluded": [
+    {
+      "file": "006_rename_guepex_tables.sql",
+      "why": [
+        "Alternative ABANDONNEE, mutuellement exclusive avec",
+        "006_create_standard_views.sql. Son propre en-tete concurrent declare :",
+        "« ALTERNATIVE MIGRATION: Create views without renaming tables — safer",
+        "alternative to 006_rename_guepex_tables.sql ».",
+        "Elle est de plus destructive : elle fait",
+        "DROP TABLE IF EXISTS shipping_tariffs, shipping_centers, communes,",
+        "wilayas CASCADE, puis renomme les tables guepex_* a leur place.",
+        "L'appliquer en plus des vues provoque l'erreur",
+        "« shipping_centers is not a table »."
+      ]
+    },
+    {
+      "file": "complete-schema.sql",
+      "why": [
+        "Instantane PRE-migration, incompatible avec le code. Il utilise des cles",
+        "primaires suffixees (users.user_id, products.product_id) et des noms de",
+        "colonnes que les migrations ont depuis renommes (orders.status au lieu de",
+        "current_status, orders.guepex_tracking_number au lieu de tracking_number),",
+        "et il ne cree ni warehouses, ni product_variants, ni collections, ni les",
+        "vues active_*. Le montage de ce fichier dans docker-entrypoint-initdb.d a",
+        "ete retire de docker-compose.yml pour cette raison."
+      ]
+    }
+  ],
+
+  "diagnostics": {
+    "$comment": "Fichiers de verification manuelle (SELECT et comptages). Jamais appliques automatiquement.",
+    "files": [
+      "comprehensive_db_analysis.sql",
+      "final_verification.sql",
+      "validate_database_fixes.sql",
+      "fix_sequences.sql"
+    ]
+  }
+}

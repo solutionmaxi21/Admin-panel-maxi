@@ -1,0 +1,1010 @@
+{
+    "info": {
+        "_postman_id": "shipping-guepex-tests-v2",
+        "name": "Shipping & Guepex API - Complete Tests",
+        "description": "Complete test collection for shipping calculator and all Guepex API features with automatic admin authentication",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:3001",
+            "type": "string"
+        },
+        {
+            "key": "adminToken",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "userToken",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "testOrderId",
+            "value": "14",
+            "type": "string"
+        },
+        {
+            "key": "testTrackingNumber",
+            "value": "yal-S73PCF",
+            "type": "string"
+        }
+    ],
+    "item": [
+        {
+            "name": "0. Authentication",
+            "item": [
+                {
+                    "name": "Admin Login",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "// Save admin token from response",
+                                    "if (pm.response.code === 200) {",
+                                    "    const jsonData = pm.response.json();",
+                                    "    ",
+                                    "    if (jsonData.accessToken) {",
+                                    "        pm.collectionVariables.set('adminToken', jsonData.accessToken);",
+                                    "        console.log('✅ Admin token saved:', jsonData.accessToken.substring(0, 30) + '...');",
+                                    "    }",
+                                    "    ",
+                                    "    pm.test('Admin login successful', function () {",
+                                    "        pm.expect(jsonData.success).to.be.true;",
+                                    "        pm.expect(jsonData.user.role).to.eql('admin');",
+                                    "        pm.expect(jsonData.accessToken).to.exist;",
+                                    "    });",
+                                    "} else {",
+                                    "    pm.test('Admin login failed', function () {",
+                                    "        pm.expect.fail('Status: ' + pm.response.code);",
+                                    "    });",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"admin@maxistore.com\",\n  \"password\": \"admin123\",\n  \"isAdmin\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/auth/login",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "auth", "login"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Customer Login",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "// Save customer token automatically",
+                                    "if (pm.response.code === 200) {",
+                                    "    const jsonData = pm.response.json();",
+                                    "    if (jsonData.user && jsonData.user.accessToken) {",
+                                    "        pm.collectionVariables.set('userToken', jsonData.user.accessToken);",
+                                    "        console.log('✅ Customer token saved:', jsonData.user.accessToken.substring(0, 20) + '...');",
+                                    "    }",
+                                    "    pm.test('Login successful', function () {",
+                                    "        pm.expect(jsonData.success).to.be.true;",
+                                    "        pm.expect(jsonData.user.role).to.eql('customer');",
+                                    "    });",
+                                    "} else {",
+                                    "    pm.test('Login failed', function () {",
+                                    "        pm.expect.fail('Status: ' + pm.response.code);",
+                                    "    });",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"test1@maxistore.com\",\n  \"password\": \"Test1234!\",\n  \"isAdmin\": false\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/auth/login",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "auth", "login"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Customer Login",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "// Save user token from response",
+                                    "if (pm.response.code === 200) {",
+                                    "    const jsonData = pm.response.json();",
+                                    "    ",
+                                    "    if (jsonData.accessToken) {",
+                                    "        pm.collectionVariables.set('userToken', jsonData.accessToken);",
+                                    "        console.log('✅ User token saved:', jsonData.accessToken.substring(0, 30) + '...');",
+                                    "    }",
+                                    "    ",
+                                    "    pm.test('Customer login successful', function () {",
+                                    "        pm.expect(jsonData.success).to.be.true;",
+                                    "        pm.expect(jsonData.user.role).to.eql('customer');",
+                                    "        pm.expect(jsonData.accessToken).to.exist;",
+                                    "    });",
+                                    "} else {",
+                                    "    pm.test('Customer login failed', function () {",
+                                    "        pm.expect.fail('Status: ' + pm.response.code);",
+                                    "    });",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"test1@maxistore.com\",\n  \"password\": \"Test1234!\",\n  \"isAdmin\": false\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/auth/login",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "auth", "login"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "1. Health & Setup",
+            "item": [
+                {
+                    "name": "Health Check",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/health",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "health"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Wilayas",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+                                    "pm.test('Returns wilayas array', () => {",
+                                    "    const jsonData = pm.response.json();",
+                                    "    pm.expect(jsonData).to.be.an('array');",
+                                    "    pm.expect(jsonData.length).to.be.above(0);",
+                                    "});"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/shipping/wilayas",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "shipping", "wilayas"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Communes (Algiers)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/shipping/communes?wilayaId=16",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "shipping", "communes"],
+                            "query": [
+                                {
+                                    "key": "wilayaId",
+                                    "value": "16"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Shipping Centers",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/shipping/centers?wilayaId=16",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "shipping", "centers"],
+                            "query": [
+                                {
+                                    "key": "wilayaId",
+                                    "value": "16"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "2. Shipping Calculator",
+            "item": [
+                {
+                    "name": "Calculate Shipping Estimate",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+                                    "pm.test('Returns shipping cost', () => {",
+                                    "    const jsonData = pm.response.json();",
+                                    "    pm.expect(jsonData.success).to.be.true;",
+                                    "    pm.expect(jsonData.data).to.have.property('totalShippingCost');",
+                                    "});"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"communeId\": 1016,\n  \"isStopDesk\": false,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"price\": 15000,\n      \"quantity\": 1,\n      \"weight\": 1.2,\n      \"dimensions\": {\n        \"length\": 30,\n        \"width\": 20,\n        \"height\": 10\n      }\n    }\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/shipping-estimate",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "shipping-estimate"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Calculate Multi-Item Estimate",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"communeId\": 1016,\n  \"isStopDesk\": false,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"price\": 15000,\n      \"quantity\": 2,\n      \"weight\": 1.2,\n      \"dimensions\": {\n        \"length\": 30,\n        \"width\": 20,\n        \"height\": 10\n      }\n    },\n    {\n      \"productId\": 2,\n      \"price\": 8500,\n      \"quantity\": 1,\n      \"weight\": 0.5\n    }\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/shipping-estimate",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "shipping-estimate"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Calculate with Stop Desk",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"communeId\": 1016,\n  \"isStopDesk\": true,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"price\": 15000,\n      \"quantity\": 1,\n      \"weight\": 1.2\n    }\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/shipping-estimate",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "shipping-estimate"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Validate Address",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/validate-address/1016?isStopDesk=false",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "validate-address", "1016"],
+                            "query": [
+                                {
+                                    "key": "isStopDesk",
+                                    "value": "false"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delivery Estimate",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/delivery-estimate/1016",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "delivery-estimate", "1016"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Stop Desks in Wilaya",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/stop-desks/16",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "stop-desks", "16"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "3. Admin - Phone Confirmation",
+            "item": [
+                {
+                    "name": "Get Orders Needing Confirmation",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/needs-confirmation",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "needs-confirmation"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Confirm Phone (Success)",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"status\": \"confirmed\",\n  \"notes\": \"Customer confirmed delivery details. Ready to ship.\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/{{testOrderId}}/phone-confirmation",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "{{testOrderId}}", "phone-confirmation"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Confirm Phone (Failed)",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"status\": \"failed\",\n  \"notes\": \"Customer unreachable after 3 attempts\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/{{testOrderId}}/phone-confirmation",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "{{testOrderId}}", "phone-confirmation"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "4. Admin - Shipment Creation",
+            "item": [
+                {
+                    "name": "Create Single Shipment",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.response.code === 200) {",
+                                    "    const jsonData = pm.response.json();",
+                                    "    if (jsonData.success && jsonData.data.tracking) {",
+                                    "        pm.collectionVariables.set('testTrackingNumber', jsonData.data.tracking);",
+                                    "        console.log('✅ Tracking number saved:', jsonData.data.tracking);",
+                                    "    }",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"prepaidAmount\": 0\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/{{testOrderId}}/create-shipment",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "{{testOrderId}}", "create-shipment"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Single Shipment (with Prepaid)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"prepaidAmount\": 5000\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/{{testOrderId}}/create-shipment",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "{{testOrderId}}", "create-shipment"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Batch Shipments",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"orderIds\": [14, 15]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/batch-create-shipments",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "batch-create-shipments"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Tracking History",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/{{testOrderId}}/tracking-history",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "{{testOrderId}}", "tracking-history"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "5. Public Tracking",
+            "item": [
+                {
+                    "name": "Track by Order Number",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"orderNumber\": \"ORD-000014\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/track",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "track"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Track by Tracking Number",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"trackingNumber\": \"{{testTrackingNumber}}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/track",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "track"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Track by Phone",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"phone\": \"+213555123456\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/track",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "track"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "6. Guepex Webhooks (Test Simulations)",
+            "item": [
+                {
+                    "name": "Webhook Validation (GET)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/webhooks/guepex",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "webhooks", "guepex"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Simulate Picked Up Status",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"type\": \"parcel_status_updated\",\n  \"events\": [\n    {\n      \"event_id\": \"test_event_pickup_001\",\n      \"occurred_at\": \"2026-01-04T12:00:00Z\",\n      \"data\": {\n        \"tracking\": \"{{testTrackingNumber}}\",\n        \"status\": \"picked_up\",\n        \"reason\": \"Package picked up from warehouse\"\n      }\n    }\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/webhooks/guepex",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "webhooks", "guepex"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Simulate In Transit Status",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"type\": \"parcel_status_updated\",\n  \"events\": [\n    {\n      \"event_id\": \"test_event_transit_001\",\n      \"occurred_at\": \"2026-01-04T13:00:00Z\",\n      \"data\": {\n        \"tracking\": \"{{testTrackingNumber}}\",\n        \"status\": \"in_transit\",\n        \"reason\": \"Package in transit to destination\"\n      }\n    }\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/webhooks/guepex",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "webhooks", "guepex"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Simulate Out for Delivery",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"type\": \"parcel_status_updated\",\n  \"events\": [\n    {\n      \"event_id\": \"test_event_out_001\",\n      \"occurred_at\": \"2026-01-04T14:00:00Z\",\n      \"data\": {\n        \"tracking\": \"{{testTrackingNumber}}\",\n        \"status\": \"out_for_delivery\",\n        \"reason\": \"Out for delivery to customer\"\n      }\n    }\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/webhooks/guepex",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "webhooks", "guepex"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Simulate Delivered Status",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"type\": \"parcel_status_updated\",\n  \"events\": [\n    {\n      \"event_id\": \"test_event_delivered_001\",\n      \"occurred_at\": \"2026-01-04T15:00:00Z\",\n      \"data\": {\n        \"tracking\": \"{{testTrackingNumber}}\",\n        \"status\": \"delivered\",\n        \"reason\": \"Package delivered successfully\"\n      }\n    }\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/webhooks/guepex",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "webhooks", "guepex"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Simulate Failed Delivery",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"type\": \"parcel_status_updated\",\n  \"events\": [\n    {\n      \"event_id\": \"test_event_failed_001\",\n      \"occurred_at\": \"2026-01-04T15:30:00Z\",\n      \"data\": {\n        \"tracking\": \"{{testTrackingNumber}}\",\n        \"status\": \"delivery_failed\",\n        \"reason\": \"Customer not available - will retry\"\n      }\n    }\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/webhooks/guepex",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "webhooks", "guepex"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Simulate Return to Sender",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"type\": \"parcel_status_updated\",\n  \"events\": [\n    {\n      \"event_id\": \"test_event_return_001\",\n      \"occurred_at\": \"2026-01-04T16:00:00Z\",\n      \"data\": {\n        \"tracking\": \"{{testTrackingNumber}}\",\n        \"status\": \"returned_to_sender\",\n        \"reason\": \"Customer refused package\"\n      }\n    }\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/webhooks/guepex",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "webhooks", "guepex"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "7. Admin - Polling Controls",
+            "item": [
+                {
+                    "name": "Get Polling Status",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/polling/status",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "polling", "status"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Start Polling",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"intervalMinutes\": 5\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/polling/start",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "polling", "start"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Stop Polling",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/polling/stop",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "polling", "stop"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Poll Specific Order",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"trackingNumber\": \"{{testTrackingNumber}}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/polling/poll-order",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "orders", "polling", "poll-order"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "8. Admin - Guepex Sync",
+            "item": [
+                {
+                    "name": "Get Sync Status",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/shipping/sync-status",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "shipping", "sync-status"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Sync Logs",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/shipping/sync-logs?limit=20",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "shipping", "sync-logs"],
+                            "query": [
+                                {
+                                    "key": "limit",
+                                    "value": "20"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Trigger Quick Sync (Fees Only)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"type\": \"quick\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/shipping/sync",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "shipping", "sync"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Trigger Full Sync (All Data)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"type\": \"full\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/shipping/sync",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["api", "shipping", "sync"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}

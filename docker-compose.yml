@@ -1,0 +1,170 @@
+# ============================================================
+# MaxiStore — orchestration complete (PostgreSQL + API + Web)
+# ============================================================
+#   cp .env.example .env      # puis regenere les secrets
+#   docker compose up -d --build
+#   -> http://localhost:3000
+#
+# Un seul port publie (WEB_PORT). Le backend et la base ne sont
+# joignables que depuis le reseau interne : pas de surface exposee.
+# ============================================================
+
+name: maxi-admin-panel
+
+services:
+  # ----------------------------------------------------------
+  # Base de donnees
+  # ----------------------------------------------------------
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-maxistore}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-maxistore}
+      POSTGRES_DB: ${POSTGRES_DB:-maxistore}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      # NOTE : plus aucun schema n'est monte dans /docker-entrypoint-initdb.d.
+      # `backend/complete-schema.sql` est un instantane PRE-migration dont les
+      # cles primaires et les noms de colonnes ne correspondent plus au code
+      # (voir la section `excluded` de backend/sql/migrations.manifest.json).
+      # Le schema est desormais applique par le service `schema` ci-dessous,
+      # qui respecte l'ordre du manifest. Ce montage est ce qui vidait
+      # /docker-entrypoint-initdb.d de son sens : ce dossier applique les
+      # fichiers par ordre alphabetique, ce qui casse les dependances entre
+      # migrations (005 doit preceder 003, 008 doit preceder 010, ...).
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U ${POSTGRES_USER:-maxistore} -d ${POSTGRES_DB:-maxistore}
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    networks:
+      - maxistore
+
+  # ----------------------------------------------------------
+  # Application du schema — one-shot, s'arrete une fois termine
+  # ----------------------------------------------------------
+  # Reutilise l'image du backend pour disposer de `pg` et des dossiers `sql/`
+  # et `scripts/`. Chaque fichier est applique dans sa propre transaction et
+  # enregistre dans la table `schema_migrations` : relancer ce service ne
+  # rejoue que ce qui a change, et un echec laisse les fichiers deja appliques
+  # en place.
+  schema:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: ["node", "scripts/apply-schema.mjs"]
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER:-maxistore}:${POSTGRES_PASSWORD:-maxistore}@postgres:5432/${POSTGRES_DB:-maxistore}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+    networks:
+      - maxistore
+
+  # ----------------------------------------------------------
+  # API Express (non exposee sur l'hote)
+  # ----------------------------------------------------------
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+      PORT: "3001"
+      DATABASE_URL: postgresql://${POSTGRES_USER:-maxistore}:${POSTGRES_PASSWORD:-maxistore}@postgres:5432/${POSTGRES_DB:-maxistore}
+
+      # Secrets — valeurs de developpement par defaut, A REMPLACER
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-dev-insecure-access-secret-change-me}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-dev-insecure-refresh-secret-change-me}
+      HMAC_SECRET: ${HMAC_SECRET:-dev-insecure-hmac-secret-change-me}
+      REVALIDATION_SECRET: ${REVALIDATION_SECRET:-dev-insecure-revalidation-secret}
+      GUEPEX_WEBHOOK_SECRET: ${GUEPEX_WEBHOOK_SECRET:-dev-insecure-webhook-secret}
+
+      # Le navigateur ne parle qu'au frontend : une seule origine a autoriser
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:3000}
+      CLIENT_URL: ${PUBLIC_URL:-http://localhost:3000}
+      FRONTEND_URL: ${PUBLIC_URL:-http://localhost:3000}
+      STORE_URL: ${PUBLIC_URL:-http://localhost:3000}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+
+      # Services externes (optionnels)
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      EMAIL_SERVICE: ${EMAIL_SERVICE:-gmail}
+      EMAIL_USER: ${EMAIL_USER:-}
+      EMAIL_PASS: ${EMAIL_PASS:-}
+      GUEPEX_API_ID: ${GUEPEX_API_ID:-}
+      GUEPEX_API_TOKEN: ${GUEPEX_API_TOKEN:-}
+      GUEPEX_BASE_URL: ${GUEPEX_BASE_URL:-https://api.guepex.app/v1}
+      GUEPEX_POLL_INTERVAL_MINUTES: ${GUEPEX_POLL_INTERVAL_MINUTES:-15}
+
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      LOG_PRETTY: "false"
+      CACHE_ENABLED: "true"
+    volumes:
+      # Images produits / categories : persistees entre les redeploiements
+      - backend-uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+      # L'API ne demarre qu'une fois le schema applique avec succes.
+      schema:
+        condition: service_completed_successfully
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://localhost:3001/api/health').then(r=>{if(!r.ok)throw new Error();process.exit(0)}).catch(()=>process.exit(1))"
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - maxistore
+
+  # ----------------------------------------------------------
+  # Next.js — point d'entree unique (storefront + /api + /uploads)
+  # ----------------------------------------------------------
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        # Fige dans le build la cible des rewrites /api et /uploads.
+        # Le nom du service backend est stable dans le reseau Compose.
+        BACKEND_URL: http://backend:3001
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      HOSTNAME: "0.0.0.0"
+      BACKEND_URL: http://backend:3001
+      # Appels cote serveur (SSR / Server Components)
+      NEXT_INTERNAL_API_URL: http://backend:3001/api
+      # Appels cote navigateur : origine unique, donc relatif
+      NEXT_PUBLIC_API_URL: /api
+    ports:
+      - "${WEB_PORT:-3000}:3000"
+    depends_on:
+      backend:
+        condition: service_started
+    networks:
+      - maxistore
+
+volumes:
+  postgres-data:
+  backend-uploads:
+
+networks:
+  maxistore:
+    driver: bridge

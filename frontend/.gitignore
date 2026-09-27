@@ -1,0 +1,13 @@
+node_modules/
+.next/
+dist/
+dist-app/
+release/
+admin/dist-app/
+admin/release/
+backend/uploads/
+.env
+.env.local
+logs/
+*.log
+tsconfig.tsbuildinfo
