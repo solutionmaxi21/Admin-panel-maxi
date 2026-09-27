@@ -33,6 +33,27 @@ class Database {
         keepAlive: true, // Prevent timeouts
       });
 
+      // Neon, RDS Proxy et la plupart des bases managees ferment les connexions
+      // OISIVES : Neon endort le compute apres ~5 minutes d'inactivite, et toute
+      // connexion encore ouverte dans le pool est coupee cote serveur.
+      //
+      // node-postgres ne signale PAS ce cas par le rejet de la requete en cours,
+      // mais par un evenement 'error' sur le Pool — c'est-a-dire exactement le
+      // cas que le try/catch de query() ci-dessous ne peut pas couvrir, puisqu'
+      // aucune requete n'est en vol au moment ou la connexion meurt.
+      //
+      // Un EventEmitter qui emet 'error' sans ecouteur RELANCE l'exception :
+      // le processus Node meurt. Sur un hebergeur qui redemarre le conteneur,
+      // cela produit une boucle de redemarrage a chaque reveil de la base.
+      //
+      // Le pool retire de lui-meme le client fautif ; absorber l'evenement suffit
+      // pour que la requete suivante ouvre une connexion neuve. keepAlive: true
+      // n'aide pas ici : c'est un keepalive TCP sur la socket, il n'empeche pas
+      // le serveur de fermer la session.
+      this.pool.on('error', (error) => {
+        console.error('⚠️ Idle PostgreSQL client error (pool recovers):', error.message);
+      });
+
       // Test connection
       const client = await this.pool.connect();
       await client.query('SELECT NOW()');
