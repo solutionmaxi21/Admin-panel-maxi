@@ -71,7 +71,9 @@ cette étape réussie (`service_completed_successfully`).
 | Variable | Valeur | Pourquoi |
 |---|---|---|
 | `ALLOWED_ORIGINS` | `https://<ton-domaine-vercel>` | Vercel relaie la requête en serveur-à-serveur et transmet l'en-tête `Origin` du navigateur. Le backend le valide : une origine absente de cette liste fait **échouer chaque appel `/api`**. |
-| `PUBLIC_URL` | `https://<ton-domaine-vercel>` | Alimente `CLIENT_URL`, `FRONTEND_URL`, `STORE_URL`. C'est l'URL des liens dans les e-mails (réinitialisation de mot de passe, vérification). Laissée à `localhost`, les e-mails pointeront vers `localhost`. |
+| `FRONTEND_URL` | `https://<ton-domaine-vercel>` | URL des liens dans les e-mails : vérification d'adresse et réinitialisation de mot de passe (`src/shared/services/email.js`, lignes 60 et 76). Laissée à `localhost`, les liens envoyés aux clients pointeront vers `localhost`. |
+| `STORE_URL` | `https://<ton-domaine-vercel>` | Lue par `cacheManager.js` (ligne 165) pour l'invalidation du cache. |
+| `PUBLIC_URL` | — | **Spécifique au chemin `docker compose`**, pas à ce déploiement. `docker-compose.yml` la recopie dans `CLIENT_URL`, `FRONTEND_URL` et `STORE_URL` (lignes 95-97) : c'est cette indirection, et elle seule, qui la rend utile. Sur un backend hébergé directement (Render, Railway, Fly.io), aucune variable ne lit `PUBLIC_URL` — la définir n'a **aucun effet**, il faut poser `FRONTEND_URL` et `STORE_URL` elles-mêmes. |
 | `COOKIE_SECURE` | `true` | Le navigateur est en HTTPS. Un cookie `Secure` posé depuis un site HTTP est rejeté. |
 | `DATABASE_URL` | chaîne de la base hébergée | Si Postgres n'est pas dans le même `compose`. |
 | `JWT_ACCESS_SECRET`, `JWT_REFRESH_SECRET`, `HMAC_SECRET`, `REVALIDATION_SECRET`, `GUEPEX_WEBHOOK_SECRET` | valeurs générées | Les valeurs `dev-insecure-...` du compose ne servent qu'au premier lancement. |
