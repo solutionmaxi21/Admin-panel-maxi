@@ -36,6 +36,11 @@ LAN ou derrière un domaine sans reconfiguration.
 > donc **aucun effet** : il faut reconstruire. C'est pourquoi le
 > `docker-compose.yml` le passe en `build.args` et non en `environment`.
 
+**Deux topologies de déploiement.** Tout-en-un avec `docker compose` (plus bas),
+ou storefront sur Vercel avec le backend en Docker — voir
+**[DEPLOY-VERCEL.md](./DEPLOY-VERCEL.md)**, qui liste les variables à changer, la
+configuration du projet Vercel, et les six pièges de cette séparation.
+
 ---
 
 ## Démarrage rapide (sans Docker)

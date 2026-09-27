@@ -17,11 +17,33 @@ import withPWA from '@ducanh2912/next-pwa'
 // plate et le Dockerfile correct.
 const currentDir = path.dirname(fileURLToPath(import.meta.url))
 
+// Deux cibles de deploiement, deux modes de sortie.
+//
+//   - Auto-hebergement (Docker, `npm run start`) : `output: 'standalone'` et
+//     `outputFileTracingRoot` sont necessaires. Voir les commentaires ci-dessus
+//     et le stage `runner` du Dockerfile.
+//
+//   - Vercel : les deux doivent etre retires.
+//       * `output: 'standalone'` y est ignore — Vercel produit sa propre sortie
+//         via la Build Output API, le dossier `.next/standalone` n'est pas lu ;
+//       * `outputFileTracingRoot` y est connu pour casser le deploiement : il
+//         restreint la trace au dossier du frontend et exclut des fichiers que
+//         Vercel attend (vercel/next.js#83294).
+//
+// Vercel positionne `VERCEL=1` lui-meme. La meme branche vaut donc pour le build
+// local, pour l'image Docker et pour Vercel, sans variable a penser :
+// `VERCEL` est absent partout ailleurs, le comportement Docker est inchange.
+const isVercel = Boolean(process.env.VERCEL)
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Acknowledge PWA uses webpack config (Turbopack migration in progress)
-  output: 'standalone',
-  outputFileTracingRoot: currentDir,
+  ...(isVercel
+    ? {}
+    : {
+        output: 'standalone',
+        outputFileTracingRoot: currentDir,
+      }),
   turbopack: {},
   // Le typage est desormais propre (tsc --noEmit : 0 erreur) : on laisse le build
   // echouer sur une erreur de type plutot que de la masquer.
